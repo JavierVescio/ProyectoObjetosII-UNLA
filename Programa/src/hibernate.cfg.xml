@@ -5,7 +5,7 @@
 	<session-factory>
 	
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost/bdsistemafrances</property>
+		<property name="connection.url">jdbc:mysql://localhost/GestionRestaurant</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
 		<property name="connection.pool_size">1</property>
@@ -13,9 +13,8 @@
 		<property name="show_sql">true</property> <!-- en true muestra hql en consola -->
 					
 		<!-- Mapeo Entidades -->
-		<!-- EJEMPLOS:
-			<mapping resource="mapeos/Evento.hbm.xml"/>
-			<mapping resource="mapeos/Cliente.hbm.xml"/> -->
+			<mapping resource="mapeos/PrecioProducto.hbm.xml"/>
+			<mapping resource="mapeos/Producto.hbm.xml"/>
 				
 	</session-factory>
 </hibernate-configuration>

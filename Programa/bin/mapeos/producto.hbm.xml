@@ -14,14 +14,21 @@
 		<property column="imagen" name="imagen" type="string"/>
 		<property column="habilitado" name="habilitado" type="boolean"/>
 		
-		<!-- PONER ACA LAS RELACIONES -->
-		<one-to-one name="plato" class="datos.Plato"></one-to-one>
-		<one-to-one name="bebida" class="datos.Bebida"></one-to-one>
-		
-		<set name="precioProducto" table="precioProducto" order-by="idPrecioProducto asc" inverse="true" lazy="true" fetch="select">
+		<!-- RELACIONES -->
+		<set name="preciosProducto" table="precioProducto" order-by="idPrecioProducto asc" inverse="true" lazy="true" fetch="select">
 			<key column="idProducto" not-null="true"/>
 			<one-to-many class="datos.PrecioProducto"/>
 		</set>
+		
+		<joined-subclass name="datos.Bebida" table="bebida">
+			<key column="idBebida"></key>
+			<property column="notas" name="notas" type="string"/>
+		</joined-subclass>
+		
+		<joined-subclass name="datos.Plato" table="plato">
+			<key column="idPlato"></key>
+			<property column="notas" name="notas" type="string"/>
+		</joined-subclass>
 		
 	</class>	
 </hibernate-mapping>

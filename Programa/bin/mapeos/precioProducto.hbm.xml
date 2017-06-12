@@ -12,7 +12,7 @@
 		<property column="precio" name="precio" type="double"/>
 		<property column="fechaCreacion" name="fechaCreacion" type="calendar"/>
 		
-		<!-- PONER ACA LAS RELACIONES -->
+		<!-- RELACIONES -->
 		<many-to-one column="idProducto" name="producto" class="datos.Producto" not-null="true"/>
 		
 	</class>	
