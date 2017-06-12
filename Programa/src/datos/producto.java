@@ -75,6 +75,14 @@ public class Producto {
 				+ ", habilitado=" + habilitado + ", preciosProducto="
 				+ preciosProducto + "]";
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idProducto;
+		return result;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -89,6 +97,5 @@ public class Producto {
 			return false;
 		return true;
 	}
-	
 	
 }

@@ -10,10 +10,11 @@ public class PrecioProducto {
 	
 	public PrecioProducto() {}
 
-	public PrecioProducto(double precio, GregorianCalendar fechaCreacion) {
+	public PrecioProducto(double precio, GregorianCalendar fechaCreacion, Producto producto) {
 		super();
 		this.precio = precio;
 		this.fechaCreacion = fechaCreacion;
+		this.producto = producto;
 	}
 
 	public int getIdPrecioProducto() {
