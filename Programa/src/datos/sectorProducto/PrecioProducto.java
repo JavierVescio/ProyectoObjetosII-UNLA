@@ -1,4 +1,4 @@
-package datos;
+package datos.sectorProducto;
 
 import java.util.GregorianCalendar;
 

@@ -1,4 +1,4 @@
-package datos;
+package datos.sectorProducto;
 
 public class Plato extends Producto {
 	private int idPlato;
