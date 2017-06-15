@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-	<class name="datos.PrecioProducto" table="precioProducto">
+	<class name="datos.sectorProducto.PrecioProducto" table="precioProducto">
 	
 		<id column="idPrecioProducto" name="idPrecioProducto">
 			<generator class="identity"/>
@@ -13,7 +13,7 @@
 		<property column="fechaCreacion" name="fechaCreacion" type="calendar"/>
 		
 		<!-- RELACIONES -->
-		<many-to-one column="idProducto" name="producto" class="datos.Producto" not-null="true"/>
+		<many-to-one column="idProducto" name="producto" class="datos.sectorProducto.Producto" not-null="true"/>
 		
 	</class>	
 </hibernate-mapping>

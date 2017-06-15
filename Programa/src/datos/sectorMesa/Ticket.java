@@ -2,7 +2,7 @@ package datos.sectorMesa;
 
 import java.util.GregorianCalendar;
 
-import datos.sectorPersonal.Personal;
+import datos.sectorPersonal.*;
 
 public class Ticket {
 	private int idTicket;
