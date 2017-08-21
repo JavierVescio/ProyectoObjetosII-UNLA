@@ -14,8 +14,6 @@ public class Mesa {
 	private GregorianCalendar fechaHoraInicio;
 	private GregorianCalendar fechaHoraFin;
 	private String habitacion;
-	private int posX;
-	private int posY;
 	private estadoMesa estado;
 	private Set<UnidadMesa> unidades;
 	
@@ -23,15 +21,13 @@ public class Mesa {
 
 	public Mesa(Cliente cliente, Personal personal,
 			GregorianCalendar fechaHoraInicio, GregorianCalendar fechaHoraFin,
-			String habitacion, int posX, int posY, estadoMesa estado, Set<UnidadMesa> unidades) {
+			String habitacion, estadoMesa estado, Set<UnidadMesa> unidades) {
 		super();
 		this.cliente = cliente;
 		this.personal = personal;
 		this.fechaHoraInicio = fechaHoraInicio;
 		this.fechaHoraFin = fechaHoraFin;
 		this.habitacion = habitacion;
-		this.posX = posX;
-		this.posY = posY;
 		this.unidades = unidades;
 		this.estado = estado;
 	}
@@ -84,22 +80,6 @@ public class Mesa {
 		this.habitacion = habitacion;
 	}
 
-	public int getPosX() {
-		return posX;
-	}
-
-	public void setPosX(int posX) {
-		this.posX = posX;
-	}
-
-	public int getPosY() {
-		return posY;
-	}
-
-	public void setPosY(int posY) {
-		this.posY = posY;
-	}
-
 	public estadoMesa getEstado() {
 		return estado;
 	}
@@ -121,8 +101,7 @@ public class Mesa {
 		return "Mesa [idMesa=" + idMesa + ", cliente=" + cliente
 				+ ", personal=" + personal + ", fechaHoraInicio="
 				+ fechaHoraInicio + ", fechaHoraFin=" + fechaHoraFin
-				+ ", habitacion=" + habitacion + ", posX=" + posX + ", posY="
-				+ posY + ", unidades=" + unidades + "]";
+				+ ", habitacion=" + habitacion + "]";
 	}
 
 	@Override

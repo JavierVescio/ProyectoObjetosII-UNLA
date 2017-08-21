@@ -2,17 +2,17 @@ package datos.sectorPersonal;
 
 public class Personal extends Persona{
 	private int idPersonal;
-	private Login login;
-	private TipoDePersonal tipoDePersonal;
+	private LogIn logIn;
+	private TipoPersonal tipoPersonal;
 	private String cuil;
 	
 	public Personal() {}
 
-	public Personal(String dni, String nombre, String apellido, Login login, TipoDePersonal tipoDePersonal,
+	public Personal(String dni, String nombre, String apellido, LogIn logIn, TipoPersonal tipoPersonal,
 			String cuil) {
 		super(dni,nombre,apellido);
-		this.login = login;
-		this.tipoDePersonal = tipoDePersonal;
+		this.logIn = logIn;
+		this.tipoPersonal = tipoPersonal;
 		this.cuil = cuil;
 	}
 
@@ -24,20 +24,20 @@ public class Personal extends Persona{
 		this.idPersonal = idPersonal;
 	}
 
-	public Login getLogin() {
-		return login;
+	public LogIn getLogin() {
+		return logIn;
 	}
 
-	public void setLogin(Login login) {
-		this.login = login;
+	public void setLogin(LogIn logIn) {
+		this.logIn = logIn;
 	}
 
-	public TipoDePersonal getTipoDePersonal() {
-		return tipoDePersonal;
+	public TipoPersonal getTipoDePersonal() {
+		return tipoPersonal;
 	}
 
-	public void setTipoDePersonal(TipoDePersonal tipoDePersonal) {
-		this.tipoDePersonal = tipoDePersonal;
+	public void setTipoDePersonal(TipoPersonal tipoDePersonal) {
+		this.tipoPersonal = tipoDePersonal;
 	}
 
 	public String getCuil() {
@@ -50,8 +50,8 @@ public class Personal extends Persona{
 
 	@Override
 	public String toString() {
-		return "Personal [idPersonal=" + idPersonal + ", login=" + login
-				+ ", tipoDePersonal=" + tipoDePersonal + ", cuil=" + cuil + "]";
+		return "Personal [idPersonal=" + idPersonal + ", logIn=" + logIn
+				+ ", tipoDePersonal=" + tipoPersonal + ", cuil=" + cuil + "]";
 	}
 
 	@Override

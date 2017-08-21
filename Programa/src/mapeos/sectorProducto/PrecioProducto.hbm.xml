@@ -14,6 +14,7 @@
 		
 		<!-- RELACIONES -->
 		<many-to-one column="idProducto" name="producto" class="datos.sectorProducto.Producto" not-null="true"/>
+		<many-to-one column="idTipoCliente" name="tipoCliente" class="datos.sectorPersonal.TipoCliente" not-null="true"/>
 		
 	</class>	
 </hibernate-mapping>

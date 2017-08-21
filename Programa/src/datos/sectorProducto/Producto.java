@@ -72,8 +72,7 @@ public class Producto {
 	public String toString() {
 		return "Producto [idProducto=" + idProducto + ", nombre=" + nombre
 				+ ", descripcion=" + descripcion + ", imagen=" + imagen
-				+ ", habilitado=" + habilitado + ", preciosProducto="
-				+ preciosProducto + "]";
+				+ ", habilitado=" + habilitado + "]";
 	}
 	
 	@Override

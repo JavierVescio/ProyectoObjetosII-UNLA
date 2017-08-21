@@ -1,0 +1,15 @@
+16/08/17
+- Revisión de diagrama de clases y DER. OKA
+- Hacer el DAO y ABM de producto. OKA
+- Crear los tres sectores (personal, mesa, producto) en los paquetes dao y negocio. OKA (solo producto)
+- Sería ideal hacer que sean Singleton los DAO. 
+- NO PUEDO LOGRAR QUE EL TEST SE VEA DE FORMA JERARQUICA. Me aparece test.sectorProducto!
+
+11/08/17
+- Checar que las relaciones, especialmente las many to one, la etiqueta "column" tenga bien el valor. OKA
+- Checar que estén todos los setters y getters. OKA
+- Actualizar "hibernate.cfg.xml". OKA
+
+09/08/17
+- Checar, en los toString de las clases ya hechas, que no se imprima una lista de items de una relación uno a muchos. OKA
+- Hacer los mapeos del sector personal. OKA (TODOS LOS MAPEOS YA ESTÁN HECHOS.)

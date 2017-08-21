@@ -1,26 +1,26 @@
 package datos.sectorPersonal;
 
-public class Login {
-	private int idLogin;
+public class LogIn {
+	private int idLogIn;
 	private String usuario;
 	private String contrasenia;
 	private boolean enLinea;
 	
-	public Login(){}
+	public LogIn(){}
 
-	public Login(String usuario, String contrasenia, boolean enLinea) {
+	public LogIn(String usuario, String contrasenia, boolean enLinea) {
 		super();
 		this.usuario = usuario;
 		this.contrasenia = contrasenia;
 		this.enLinea = enLinea;
 	}
 
-	public int getIdLogin() {
-		return idLogin;
+	public int getIdLogIn() {
+		return idLogIn;
 	}
 
-	protected void setIdLogin(int idLogin) {
-		this.idLogin = idLogin;
+	protected void setIdLogIn(int idLogIn) {
+		this.idLogIn = idLogIn;
 	}
 
 	public String getUsuario() {
@@ -49,7 +49,7 @@ public class Login {
 
 	@Override
 	public String toString() {
-		return "Login [idLogin=" + idLogin + ", usuario=" + usuario
+		return "LogIn [idLogin=" + idLogIn + ", usuario=" + usuario
 				+ ", contrasenia=" + contrasenia + ", enLinea=" + enLinea + "]";
 	}
 
@@ -57,7 +57,7 @@ public class Login {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idLogin;
+		result = prime * result + idLogIn;
 		return result;
 	}
 
@@ -69,8 +69,8 @@ public class Login {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Login other = (Login) obj;
-		if (idLogin != other.idLogin)
+		LogIn other = (LogIn) obj;
+		if (idLogIn != other.idLogIn)
 			return false;
 		return true;
 	}
