@@ -32,12 +32,12 @@ public class Personal extends Persona{
 		this.logIn = logIn;
 	}
 
-	public TipoPersonal getTipoDePersonal() {
+	public TipoPersonal getTipoPersonal() {
 		return tipoPersonal;
 	}
 
-	public void setTipoDePersonal(TipoPersonal tipoDePersonal) {
-		this.tipoPersonal = tipoDePersonal;
+	public void setTipoPersonal(TipoPersonal tipoPersonal) {
+		this.tipoPersonal = tipoPersonal;
 	}
 
 	public String getCuil() {
@@ -51,7 +51,7 @@ public class Personal extends Persona{
 	@Override
 	public String toString() {
 		return "Personal [idPersonal=" + idPersonal + ", logIn=" + logIn
-				+ ", tipoDePersonal=" + tipoPersonal + ", cuil=" + cuil + "]";
+				+ ", tipoPersonal=" + tipoPersonal + ", cuil=" + cuil + "]";
 	}
 
 	@Override
