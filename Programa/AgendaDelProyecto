@@ -1,3 +1,12 @@
+28/08/17
+- Se pueden agregar platos. Tuve que quitar de las relaciones muchos a uno de las clases Personal y Cliente para que funcionara.
+Quizas no se puedan mapear relaciones de este tipo en clases hijas.
+- La relacion muchos a uno de Cliente funciona. El problema lo estaria causando Personal. El problema lo causaba el atributo logIn.
+Los getters y setters no estaban bien escritos; decian getLogin() en vez de getLogIn(). Eso hacia que Hibernate creyera que no estaba.
+
+21/08/17
+- Le escribi un mail a Leandro de asunto "Mapeo de relación uno a muchos desde una subclase - Consulta".
+
 16/08/17
 - Revisión de diagrama de clases y DER. OKA
 - Hacer el DAO y ABM de producto. OKA

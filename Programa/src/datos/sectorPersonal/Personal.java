@@ -12,7 +12,7 @@ public class Personal extends Persona{
 			String cuil) {
 		super(dni,nombre,apellido);
 		this.logIn = logIn;
-		this.tipoPersonal = tipoPersonal;
+		this.tipoPersonal = tipoPersonal; //oka
 		this.cuil = cuil;
 	}
 
@@ -24,11 +24,11 @@ public class Personal extends Persona{
 		this.idPersonal = idPersonal;
 	}
 
-	public LogIn getLogin() {
+	public LogIn getLogIn() {
 		return logIn;
 	}
 
-	public void setLogin(LogIn logIn) {
+	public void setLogIn(LogIn logIn) {
 		this.logIn = logIn;
 	}
 

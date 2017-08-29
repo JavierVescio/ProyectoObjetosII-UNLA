@@ -39,7 +39,7 @@ public class LogIn {
 		this.contrasenia = contrasenia;
 	}
 
-	public boolean isEnLinea() {
+	public boolean getEnLinea() {
 		return enLinea;
 	}
 

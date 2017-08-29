@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="datos.sectorPersonal.LogIn" table="logIn">
+	<class name="datos.sectorPersonal.LogIn" table="login">
 	
 		<!-- 1.CAMPOS CLAVE -->
 			<!-- Primaria -->

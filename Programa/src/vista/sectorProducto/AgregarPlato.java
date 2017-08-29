@@ -8,7 +8,7 @@ public class AgregarPlato {
 		// TODO Auto-generated method stub
 
 		ProductoABM productoABM = new ProductoABM();
-		int idProducto = productoABM.agregarPlato("Fideos", "A la boloniesa", "-", "Son muy ricos");
+		int idProducto = productoABM.agregarPlato("Fideos", "Tallarines", "-", "Receta de la abuela");
 		System.out.println("idProducto: " + idProducto);
 	}
 	
