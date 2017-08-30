@@ -2,13 +2,14 @@ package datos.sectorProducto;
 
 import java.util.Set;
 
-public class Producto {
-	private int idProducto;
-	private String nombre;
-	private String descripcion;
-	private String imagen;
-	private boolean habilitado;
-	private Set<PrecioProducto> preciosProducto;
+public abstract class Producto {
+	//Van a ser protected asi pueden ser accedidos desde Plato/Bebida sin tener que usar los setters y getters.
+	protected int idProducto; 
+	protected String nombre;
+	protected String descripcion;
+	protected String imagen;
+	protected boolean habilitado;
+	protected Set<PrecioProducto> preciosProducto;
 	
 	public Producto() {}
 

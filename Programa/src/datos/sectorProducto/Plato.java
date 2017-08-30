@@ -29,7 +29,10 @@ public class Plato extends Producto {
 
 	@Override
 	public String toString() {
-		return "Plato [idPlato=" + idPlato + ", notas=" + notas + "]";
+		return "Producto [idProducto=" + idProducto + ", nombre=" + nombre
+				+ ", descripcion=" + descripcion + ", imagen=" + imagen
+				+ ", habilitado=" + habilitado			
+			    + "]\n Plato [notas=" + notas + "]";
 	}
 	
 	@Override

@@ -72,7 +72,7 @@ public class ProductoDao {
 	
 /* 2.TRAYENDO LA INFORMACION */
 	//Mediante su clave primaria
-	public Producto traerProducto(int idProducto) throws HibernateException {
+	public Producto traerProductoPorId(int idProducto) throws HibernateException {
 		Producto objeto = null ;
 		try {
 			iniciaOperacion();
@@ -81,6 +81,19 @@ public class ProductoDao {
 			session.close();
 		}
 		return objeto;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Producto> traerProductoPorNombre(String nombre) throws HibernateException {
+		List<Producto> lista=null;
+
+		try {
+			iniciaOperacion();
+			lista = session.createQuery("from Producto where nombre like '%"+nombre+"%'").list();
+		}finally {
+			session.close();
+		}
+		return lista;
 	}
 	
 	//Traer en una lista todos los productos que hayan.

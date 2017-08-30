@@ -1,3 +1,7 @@
+29/08/17
+- Que se pueda dar de alta una bebida. OKA
+- Completar todas las funciones definidas en el diagrama de clases para ProductoABM. OKA
+
 28/08/17
 - Se pueden agregar platos. Tuve que quitar de las relaciones muchos a uno de las clases Personal y Cliente para que funcionara.
 Quizas no se puedan mapear relaciones de este tipo en clases hijas.
@@ -6,6 +10,7 @@ Los getters y setters no estaban bien escritos; decian getLogin() en vez de getL
 
 21/08/17
 - Le escribi un mail a Leandro de asunto "Mapeo de relación uno a muchos desde una subclase - Consulta".
+- Lo contestó el 28/08. La consulta ya fue evacuada.
 
 16/08/17
 - Revisión de diagrama de clases y DER. OKA

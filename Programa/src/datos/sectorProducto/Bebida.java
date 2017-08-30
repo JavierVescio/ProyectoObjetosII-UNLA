@@ -29,7 +29,10 @@ public class Bebida extends Producto{
 
 	@Override
 	public String toString() {
-		return "Bebida [idBebida=" + idBebida + ", notas=" + notas + "]";
+		return "Producto [idProducto=" + idProducto + ", nombre=" + nombre
+				+ ", descripcion=" + descripcion + ", imagen=" + imagen
+				+ ", habilitado=" + habilitado			
+			    + "]\n Bebida [notas=" + notas + "]";
 	}
 
 	@Override
