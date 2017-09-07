@@ -13,7 +13,9 @@ public class ModificarProducto {
 			Producto producto = abmProducto.traerProductoPorId(5);
 			System.out.println(producto);
 			producto.setImagen("No disponible");
+			
 			abmProducto.modificar(producto);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

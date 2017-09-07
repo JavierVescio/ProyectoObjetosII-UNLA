@@ -78,12 +78,12 @@ public class Funciones {
 	}
 
 	public static String traerFechaCorta(GregorianCalendar fecha) {
-		return fechaConFormato(fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.MONTH), fecha.get(Calendar.YEAR));
+		return fechaConFormato(fecha.get(Calendar.DAY_OF_MONTH), fecha.get(Calendar.MONTH)+1, fecha.get(Calendar.YEAR));
 	}
 
 	public static String traerFechaCorta() {
 		GregorianCalendar objGregorianCalendar = new GregorianCalendar();
-		return fechaConFormato(objGregorianCalendar.get(Calendar.DAY_OF_MONTH), objGregorianCalendar.get(Calendar.MONTH), objGregorianCalendar.get(Calendar.YEAR));
+		return fechaConFormato(objGregorianCalendar.get(Calendar.DAY_OF_MONTH), objGregorianCalendar.get(Calendar.MONTH)+1, objGregorianCalendar.get(Calendar.YEAR));
 	}
 
 	public static String fechaConFormato(int dia, int mes, int anio) {
@@ -234,17 +234,17 @@ public class Funciones {
 	}
 
 	// despues
-	public static boolean after(GregorianCalendar fDesde, GregorianCalendar fHasta) {
+	public static boolean esFechaPosterior(GregorianCalendar fDesde, GregorianCalendar fHasta) {
 		boolean despues = false;
-		if (fDesde.getTimeInMillis() >= fHasta.getTimeInMillis())
+		if (fDesde.getTimeInMillis() > fHasta.getTimeInMillis())
 			despues = true;
 		return despues;
 	}
 
 	// antes
-	public static boolean before(GregorianCalendar fDesde, GregorianCalendar fHasta) {
+	public static boolean esFechaAnterior(GregorianCalendar fDesde, GregorianCalendar fHasta) {
 		boolean despues = false;
-		if (fDesde.getTimeInMillis() <= fHasta.getTimeInMillis())
+		if (fDesde.getTimeInMillis() < fHasta.getTimeInMillis())
 			despues = true;
 		return despues;
 	}

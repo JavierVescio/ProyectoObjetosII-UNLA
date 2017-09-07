@@ -2,6 +2,7 @@ package datos.sectorProducto;
 
 import java.util.GregorianCalendar;
 
+import negocio.Funciones;
 import datos.sectorPersonal.TipoCliente;
 
 public class PrecioProducto {
@@ -13,11 +14,12 @@ public class PrecioProducto {
 	
 	public PrecioProducto() {}
 
-	public PrecioProducto(double precio, GregorianCalendar fechaCreacion, Producto producto) {
+	public PrecioProducto(double precio, GregorianCalendar fechaCreacion, Producto producto, TipoCliente tipoCliente) {
 		super();
 		this.precio = precio;
 		this.fechaCreacion = fechaCreacion;
 		this.producto = producto;
+		this.tipoCliente = tipoCliente;
 	}
 
 	public TipoCliente getTipoCliente() {
@@ -65,7 +67,7 @@ public class PrecioProducto {
 	@Override
 	public String toString() {
 		return "PrecioProducto [idPrecioProducto=" + idPrecioProducto
-				+ ", precio=" + precio + ", fechaCreacion=" + fechaCreacion
+				+ ", precio=" + precio + ", fechaCreacion=" + Funciones.traerFechaCorta(fechaCreacion)
 				+ ", producto=" + producto + "]";
 	}
 

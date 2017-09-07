@@ -5,10 +5,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+
 import dao.HibernateUtil;
 import datos.sectorProducto.*;
 
-public class ProductoDao {
+public class PrecioProductoDao {
 	private static Session session;
 	private Transaction tx;
 
@@ -24,7 +25,7 @@ public class ProductoDao {
 	
 
 /* 1.ABM */
-	public int agregar(Producto objeto) {
+	public int agregar(PrecioProducto objeto) {
 		int id=0;
 		try {
 			iniciaOperacion();
@@ -39,7 +40,7 @@ public class ProductoDao {
 		return id;
 	}
 	
-	public void actualizar(Producto objeto) throws HibernateException {
+	public void actualizar(PrecioProducto objeto) throws HibernateException {
 		try {
 			iniciaOperacion();
 			session.update(objeto);
@@ -52,7 +53,7 @@ public class ProductoDao {
 		}
 	}
 	
-	public void eliminar(Producto objeto) throws HibernateException {
+	public void eliminar(PrecioProducto objeto) throws HibernateException {
 		try {
 			iniciaOperacion();
 			session.delete(objeto);
@@ -69,38 +70,27 @@ public class ProductoDao {
 	
 /* 2.TRAYENDO LA INFORMACION */
 	//Mediante su clave primaria
-	public Producto traerProductoPorId(int idProducto) throws HibernateException {
-		Producto objeto = null ;
+	public PrecioProducto traerPrecioProductoPorId(int idPrecioProducto) throws HibernateException {
+		PrecioProducto objeto = null ;
 		try {
 			iniciaOperacion();
-			objeto = (Producto)session.get(Producto.class, idProducto);
+			objeto = (PrecioProducto)session.createQuery("from PrecioProducto p inner join fetch p.producto inner join fetch p.tipoCliente where idPrecioProducto="+idPrecioProducto).uniqueResult();
 		} finally {
 			session.close();
 		}
 		return objeto;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Producto> traerProductoPorNombre(String nombre) throws HibernateException {
-		List<Producto> lista=null;
-
-		try {
-			iniciaOperacion();
-			lista = session.createQuery("from Producto where nombre like '%"+nombre+"%'").list();
-		}finally {
-			session.close();
-		}
-		return lista;
-	}
-	
 	//Traer en una lista todos los productos que hayan.
+	//SELECT *, MAX(p.fechaCreacion) FROM precioproducto p WHERE p.idProducto = 6 AND p.idTipoCliente = 1 ;
 	@SuppressWarnings("unchecked")
-	public List<Producto> traerProductos() throws HibernateException {
-		List<Producto> lista=null;
+	public List<PrecioProducto> traerPrecioProductoPorCliente(int idProducto, int idTipoCliente) throws HibernateException {
+		List<PrecioProducto> lista=null;
 
 		try {
 			iniciaOperacion();
-			lista = session.createQuery("from Producto").list();
+			String strQuery = "from PrecioProducto p inner join fetch p.producto inner join fetch p.tipoCliente where p.producto = '"+idProducto+"' and p.tipoCliente = '"+idTipoCliente+"'";
+			lista = session.createQuery(strQuery).list();
 		}finally {
 			session.close();
 		}

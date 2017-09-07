@@ -21,7 +21,9 @@ public class ProductoABM {
 		return dao.agregar(producto);
 	}
 	
-	public void modificar(Producto producto) {
+	public void modificar(Producto producto) throws Exception {
+		if (producto==null)
+			throw new Exception("producto nulo");
 		dao.actualizar(producto);	
 	}
 	
@@ -123,6 +125,13 @@ public class ProductoABM {
 			throw new Exception("No se obtuvo resultados");
 		return listaProducto;
 	}
+/* --- */
+	
+	
+/* 3.OTRAS FUNCIONES */
+	 
+	
+	
 /* --- */
 	
 	
