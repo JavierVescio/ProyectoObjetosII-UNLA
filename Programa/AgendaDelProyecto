@@ -1,8 +1,19 @@
+17/09/17 
+- Funciona el logIn del personal. OKA
+- Revisar que ya esté toda la parte de Personal. OKA
+Solo faltan los dao y abm del sectorMesa.
+
 07/09/17
-- Todo el ABM de PrecioProducto ya esta hecho y testeado.
+- Todo el ABM de PrecioProducto ya esta hecho y testeado. OKA
+- Empezar con la parte de sectorPersonal. Principalmente con TipoPersonal OKA, LogIn y TipoCliente OKA.
+- Faltaria agregar mas metodos al ABM de LogIn OKA. Agregar el ABM de LogIn en el diagrama de clases OKA.
+
+- Faltaria rematar las funciones en torno a tipoCliente del sectorPersonal, que permitan traer los precios
+de los productos dependiendo del tipo de cliente en el sectorProducto.
+- IMPORTANTE. Crear ABM de Persona.
 
 30/08/17
-- Hacer lo referido a precios del producto.
+- Hacer lo referido a precios del producto. OKA
 
 29/08/17
 - Que se pueda dar de alta una bebida. OKA

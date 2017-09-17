@@ -2,13 +2,13 @@ package datos.sectorPersonal;
 
 public class TipoPersonal {
 	private int idTipoPersonal;
-	private String tipoPersonal;
+	private String nombre;
 	
 	public TipoPersonal() {}
 
-	public TipoPersonal(String tipoPersonal) {
+	public TipoPersonal(String nombre) {
 		super();
-		this.tipoPersonal = tipoPersonal;
+		this.nombre = nombre;
 	}
 
 	public int getIdTipoPersonal() {
@@ -19,18 +19,18 @@ public class TipoPersonal {
 		this.idTipoPersonal = idTipoPersonal;
 	}
 
-	public String getTipoPersonal() {
-		return tipoPersonal;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setTipoPersonal(String tipoPersonal) {
-		this.tipoPersonal = tipoPersonal;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	@Override
 	public String toString() {
 		return "TipoDePersonal [idTipoPersonal=" + idTipoPersonal
-				+ ", tipoPersonal=" + tipoPersonal + "]";
+				+ ", nombre=" + nombre + "]";
 	}
 
 	@Override

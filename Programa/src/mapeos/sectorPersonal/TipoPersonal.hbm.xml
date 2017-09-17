@@ -14,7 +14,7 @@
 		<!--  -->		
 	
 		<!-- 2.ATRIBUTOS DESCRIPTIVOS -->
-			<property column="tipoPersonal" name="tipoPersonal" type="string"/>
+			<property column="nombre" name="nombre" type="string"/>
 		<!--  -->
 	
 	</class>

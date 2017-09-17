@@ -50,7 +50,9 @@ public class Personal extends Persona{
 
 	@Override
 	public String toString() {
-		return "Personal [idPersonal=" + idPersonal + ", logIn=" + logIn
+		return "Persona [idPersona=" + idPersona + ", dni=" + dni + ", nombre="
+				+ nombre + ", apellido=" + apellido 
+				+ "] Personal [idPersonal=" + idPersonal + ", logIn=" + logIn
 				+ ", tipoPersonal=" + tipoPersonal + ", cuil=" + cuil + "]";
 	}
 

@@ -1,4 +1,4 @@
--- MySQL Workbench Forward Engineering
+﻿-- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -111,7 +111,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gestion-restaurant`.`tipoPersonal` (
   `idTipoPersonal` INT NOT NULL AUTO_INCREMENT,
-  `tipoPersonal` VARCHAR(45) NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idTipoPersonal`))
 ENGINE = InnoDB;
 

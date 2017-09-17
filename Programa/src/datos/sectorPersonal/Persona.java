@@ -1,10 +1,11 @@
 package datos.sectorPersonal;
 
 public class Persona {
-	private int idPersona;
-	private String dni;
-	private String nombre;
-	private String apellido;
+	//Van a ser protected asi pueden ser accedidos desde Cliente/Personal sin tener que usar los setters y getters.
+	protected int idPersona;
+	protected String dni;
+	protected String nombre;
+	protected String apellido;
 	
 	public Persona() {}
 
@@ -45,12 +46,6 @@ public class Persona {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-
-	@Override
-	public String toString() {
-		return "Persona [idPersona=" + idPersona + ", dni=" + dni + ", nombre="
-				+ nombre + ", apellido=" + apellido + "]";
 	}
 
 	@Override

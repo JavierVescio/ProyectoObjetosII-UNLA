@@ -8,11 +8,11 @@ public class LogIn {
 	
 	public LogIn(){}
 
-	public LogIn(String usuario, String contrasenia, boolean enLinea) {
+	public LogIn(String usuario, String contrasenia) {
 		super();
 		this.usuario = usuario;
 		this.contrasenia = contrasenia;
-		this.enLinea = enLinea;
+		enLinea = false;
 	}
 
 	public int getIdLogIn() {

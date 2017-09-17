@@ -12,8 +12,15 @@ public class AgregarPlato {
 		String descripcionProducto = "Plato de fideos con salsa";
 		String imagenProducto = "-";
 		String notasPlato = "Incluye dos sobresitos de queso de rallar";
-		int idProducto = abmProducto.agregarPlato(nombreProducto, descripcionProducto, imagenProducto, notasPlato);
-		System.out.println("idProducto: " + idProducto);
+		
+		try {
+			int idProducto = abmProducto.agregarPlato(nombreProducto, descripcionProducto, imagenProducto, notasPlato);
+			System.out.println("idProducto: " + idProducto);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

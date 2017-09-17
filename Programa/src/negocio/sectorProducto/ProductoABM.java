@@ -11,12 +11,16 @@ public class ProductoABM {
 	
 	
 /* 1.ABM */
-	public int agregarPlato(String nombre, String descripcion, String imagen, String notas) {
+	public int agregarPlato(String nombre, String descripcion, String imagen, String notas) throws Exception {
+		if (nombre.isEmpty())
+			throw new Exception("nombre sin escribir");
 		Producto producto = new Plato(nombre, descripcion, imagen, notas);
 		return dao.agregar(producto);
 	}
 	
-	public int agregarBebida(String nombre, String descripcion, String imagen, String notas) {
+	public int agregarBebida(String nombre, String descripcion, String imagen, String notas) throws Exception {
+		if (nombre.isEmpty())
+			throw new Exception("nombre sin escribir");
 		Producto producto = new Bebida(nombre, descripcion, imagen, notas);
 		return dao.agregar(producto);
 	}

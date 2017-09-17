@@ -12,8 +12,14 @@ public class AgregarBebida {
 		String descripcionProducto = "Bebida de cola";
 		String imagenProducto = "-";
 		String notasBebida = "Botella plástica 600ml";
-		int idProducto = abmProducto.agregarBebida(nombreProducto, descripcionProducto, imagenProducto, notasBebida);
-		System.out.println("idProducto: " + idProducto);
+		
+		try {
+			int idProducto = abmProducto.agregarBebida(nombreProducto, descripcionProducto, imagenProducto, notasBebida);
+			System.out.println("idProducto: " + idProducto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
