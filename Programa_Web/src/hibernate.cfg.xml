@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+	
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost/gestion-restaurant</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">Sklam266Dtrank</property>
+		<property name="connection.pool_size">1</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="show_sql">true</property> <!-- en true muestra hql en consola -->
+					
+		<!-- Mapeo Entidades -->
+			<!-- 1.sectorMesa -->
+				<mapping resource="mapeos/sectorMesa/Comanda.hbm.xml"/>
+				<mapping resource="mapeos/sectorMesa/DetalleComanda.hbm.xml"/>
+				<mapping resource="mapeos/sectorMesa/Mesa.hbm.xml"/>
+				<mapping resource="mapeos/sectorMesa/OcupacionMesa.hbm.xml"/>
+				<mapping resource="mapeos/sectorMesa/Ticket.hbm.xml"/>
+				<mapping resource="mapeos/sectorMesa/UnidadMesa.hbm.xml"/>
+			<!--  -->
+			
+			<!-- 2.sectorPersonal-->
+				<mapping resource="mapeos/sectorPersonal/LogIn.hbm.xml"/>
+				<mapping resource="mapeos/sectorPersonal/Persona.hbm.xml"/>
+				<mapping resource="mapeos/sectorPersonal/TipoCliente.hbm.xml"/>
+				<mapping resource="mapeos/sectorPersonal/TipoPersonal.hbm.xml"/>
+			<!--  -->
+			
+			<!-- 3.sectorProducto-->
+				<mapping resource="mapeos/sectorProducto/PrecioProducto.hbm.xml"/>
+				<mapping resource="mapeos/sectorProducto/Producto.hbm.xml"/>
+			<!--  -->
+		<!--  -->
+				
+	</session-factory>
+</hibernate-configuration>
+
+

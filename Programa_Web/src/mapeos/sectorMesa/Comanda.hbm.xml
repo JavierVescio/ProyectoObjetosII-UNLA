@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="datos.sectorMesa.Comanda" table="comanda">
+	
+		<!-- 1.CAMPOS CLAVE -->
+			<!-- Primaria -->
+				<id column="idComanda" name="idComanda">
+					<generator class="identity"/>
+				</id>
+			<!--  -->
+		<!--  -->
+	
+		<!-- 2.ATRIBUTOS DESCRIPTIVOS -->
+			<property column="anulada" name="anulada" type="boolean"/>
+			<property column="fechaHora" name="fechaHora" type="calendar"/>
+		<!--  -->
+		
+		<!-- 3.RELACIONES -->
+			<!-- 1..* -->
+				<set name="detalleComandas" cascade="save-update" table="detalleComanda" order-by="idDetalleComanda asc" inverse="true" lazy="true" fetch="select">
+					<key column="idComanda" not-null="true"/>
+					<one-to-many class="datos.sectorMesa.DetalleComanda"/>
+				</set>
+			<!--  -->
+		
+			<!-- *..1 -->
+				<many-to-one column="idOcupacionMesa" name="ocupacionMesa" class="datos.sectorMesa.OcupacionMesa" not-null="true"/>
+			<!--  -->		
+		<!--  -->
+		
+	</class>
+</hibernate-mapping>
