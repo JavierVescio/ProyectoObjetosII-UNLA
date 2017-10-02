@@ -52,8 +52,7 @@ public class Personal extends Persona{
 	public String toString() {
 		return "Persona [idPersona=" + idPersona + ", dni=" + dni + ", nombre="
 				+ nombre + ", apellido=" + apellido 
-				+ "] Personal [idPersonal=" + idPersonal + ", logIn=" + logIn
-				+ ", tipoPersonal=" + tipoPersonal + ", cuil=" + cuil + "]";
+				+ "] Personal [idPersonal=" + idPersonal + ", cuil=" + cuil + "]";
 	}
 
 	@Override

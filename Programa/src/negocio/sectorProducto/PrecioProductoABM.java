@@ -49,10 +49,16 @@ public class PrecioProductoABM {
 			throw new Exception("producto nulo");
 		if (cliente==null)
 			throw new Exception("cliente nulo");
+		
+		System.out.println("\n\n traerPrecioProductoMasRecientePorCliente \n");
+		System.out.println("producto: " + producto);
+		System.out.println("tipoCliente: " + cliente.getTipoCliente());
+		
+		
 		List<PrecioProducto> listaPrecioProducto = dao.traerPrecioProductoPorCliente(producto.getIdProducto(), cliente.getTipoCliente().getIdTipoCliente());
 		
 		if (listaPrecioProducto.isEmpty())
-			throw new Exception("No se obtuvo resultados");
+			throw new Exception("No hay precios asociados al producto para el tipo de cliente seleccionado");
 		
 		PrecioProducto precioProductoMasReciente = null;
 		

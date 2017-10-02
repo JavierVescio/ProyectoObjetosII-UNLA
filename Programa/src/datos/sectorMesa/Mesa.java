@@ -1,34 +1,21 @@
 package datos.sectorMesa;
-
-import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.Set;
 
-import datos.sectorPersonal.*;
-
 public class Mesa {
-	private enum estadoMesa {libre,ocupado,terminado};
-	
 	private int idMesa;
-	private Cliente cliente;
-	private Personal personal;
-	private GregorianCalendar fechaHoraInicio;
-	private GregorianCalendar fechaHoraFin;
-	private String habitacion;
-	private estadoMesa estado;
+	private int nroMesa;
+	private int estado;	//'0', '1' ('libre', 'ocupada') respectivamente.
 	private Set<UnidadMesa> unidades;
 	
-	public Mesa(){}
-
-	public Mesa(Cliente cliente, Personal personal,
-			GregorianCalendar fechaHoraInicio, GregorianCalendar fechaHoraFin,
-			String habitacion, estadoMesa estado, Set<UnidadMesa> unidades) {
+	public Mesa() {
 		super();
-		this.cliente = cliente;
-		this.personal = personal;
-		this.fechaHoraInicio = fechaHoraInicio;
-		this.fechaHoraFin = fechaHoraFin;
-		this.habitacion = habitacion;
-		this.unidades = unidades;
+		// TODO Auto-generated constructor stub
+	}
+
+	public Mesa(int nroMesa, int estado) {
+		super();
+		this.nroMesa = nroMesa;
 		this.estado = estado;
 	}
 
@@ -36,58 +23,26 @@ public class Mesa {
 		return idMesa;
 	}
 
-	public void setIdMesa(int idMesa) {
+	protected void setIdMesa(int idMesa) {
 		this.idMesa = idMesa;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public int getNroMesa() {
+		return nroMesa;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setNroMesa(int nroMesa) {
+		this.nroMesa = nroMesa;
 	}
 
-	public Personal getPersonal() {
-		return personal;
-	}
-
-	public void setPersonal(Personal personal) {
-		this.personal = personal;
-	}
-
-	public GregorianCalendar getFechaHoraInicio() {
-		return fechaHoraInicio;
-	}
-
-	public void setFechaHoraInicio(GregorianCalendar fechaHoraInicio) {
-		this.fechaHoraInicio = fechaHoraInicio;
-	}
-
-	public GregorianCalendar getFechaHoraFin() {
-		return fechaHoraFin;
-	}
-
-	public void setFechaHoraFin(GregorianCalendar fechaHoraFin) {
-		this.fechaHoraFin = fechaHoraFin;
-	}
-
-	public String getHabitacion() {
-		return habitacion;
-	}
-
-	public void setHabitacion(String habitacion) {
-		this.habitacion = habitacion;
-	}
-
-	public estadoMesa getEstado() {
+	public int getEstado() {
 		return estado;
 	}
 
-	public void setEstado(estadoMesa estado) {
+	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-	
+
 	public Set<UnidadMesa> getUnidades() {
 		return unidades;
 	}
@@ -95,13 +50,18 @@ public class Mesa {
 	public void setUnidades(Set<UnidadMesa> unidades) {
 		this.unidades = unidades;
 	}
+	
+	public void cargarUnidadMesa(UnidadMesa unidadMesa){
+		if (unidades == null) {
+			unidades = new HashSet<UnidadMesa>();
+		}
+		unidades.add(unidadMesa);
+	}
 
 	@Override
 	public String toString() {
-		return "Mesa [idMesa=" + idMesa + ", cliente=" + cliente
-				+ ", personal=" + personal + ", fechaHoraInicio="
-				+ fechaHoraInicio + ", fechaHoraFin=" + fechaHoraFin
-				+ ", habitacion=" + habitacion + "]";
+		return "Mesa [idMesa=" + idMesa + ", nroMesa=" + nroMesa + ", estado="
+				+ estado + ", unidades=" + unidades + "]";
 	}
 
 	@Override

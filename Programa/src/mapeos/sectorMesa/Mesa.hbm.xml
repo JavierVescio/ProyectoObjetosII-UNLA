@@ -4,6 +4,7 @@
 
 <hibernate-mapping>
 	<class name="datos.sectorMesa.Mesa" table="mesa">
+	
 		<!-- 1.CAMPOS CLAVE -->
 			<!-- Primaria -->
 				<id column="idMesa" name="idMesa">
@@ -13,20 +14,13 @@
 		<!--  -->	
 	
 		<!-- 2.ATRIBUTOS DESCRIPTIVOS -->
-			<property column="habitacion" name="habitacion" type="string"/>
-			<property column="estado" name="estado" type="string"/>
-			<property column="fechaHoraInicio" name="fechaHoraInicio" type="calendar"/>
-			<property column="fechaHoraFin" name="fechaHoraFin" type="calendar"/>
+			<property column="nroMesa" name="nroMesa" type="int"/>
+			<property column="estado" name="estado" type="int"/>
 		<!--  -->
 		
 		<!-- 3.RELACIONES -->
-			<!-- *..1 -->
-				<many-to-one column="idCliente" name="cliente" class="datos.sectorPersonal.Cliente" not-null="true"/>
-				<many-to-one column="idPersonal" name="personal" class="datos.sectorPersonal.Personal" not-null="true"/>
-			<!--  -->	
-			
-			<!-- 1..* -->
-				<set name="unidades" table="unidadMesa" order-by="idUnidadMesa asc" inverse="true" lazy="true" fetch="select">
+			<!-- 1..* ​-->
+				<set name="unidades" cascade="save-update" table="unidadmesa" order-by="idUnidadMesa asc" inverse="true" lazy="true" fetch="select">
 					<key column="idMesa" not-null="true"/>
 					<one-to-many class="datos.sectorMesa.UnidadMesa"/>
 				</set>

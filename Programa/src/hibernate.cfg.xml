@@ -17,6 +17,7 @@
 				<mapping resource="mapeos/sectorMesa/Comanda.hbm.xml"/>
 				<mapping resource="mapeos/sectorMesa/DetalleComanda.hbm.xml"/>
 				<mapping resource="mapeos/sectorMesa/Mesa.hbm.xml"/>
+				<mapping resource="mapeos/sectorMesa/OcupacionMesa.hbm.xml"/>
 				<mapping resource="mapeos/sectorMesa/Ticket.hbm.xml"/>
 				<mapping resource="mapeos/sectorMesa/UnidadMesa.hbm.xml"/>
 			<!--  -->

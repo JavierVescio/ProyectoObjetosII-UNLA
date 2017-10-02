@@ -1,7 +1,21 @@
+01/10/17
+- Volver a probar y revisar todo lo relacionado a la vista del sectorMesa. En especial, que cuando cree una mesa, esta
+se cree con estado libre, y que cuando se cargue una ocupacionMesa, el estado de la mesa pase a ocupado. OKA.
+- Que si la ocupacion de la mesa termina, que su estado vuelva a libre. OKA.
+- Ya se puede agregar mesas y cargar unidades mesa. YEY!
+
+20/09/17
+- Continuar desde la vista AgregarComanda. Ya hay una mesa agregada, pero el estado de la mesa es 0 (libre). OKA
+- Probar la generación de comanda. OKA
+
+18/09/17
+- Probar el ABM de UnidadMesa. OKA.
+- Quitar el ENUM de Mesa. OKA.
+
 17/09/17 
 - Funciona el logIn del personal. OKA
 - Revisar que ya esté toda la parte de Personal. OKA
-Solo faltan los dao y abm del sectorMesa.
+Solo faltan los dao y abm del sectorMesa. OKA
 
 07/09/17
 - Todo el ABM de PrecioProducto ya esta hecho y testeado. OKA
@@ -34,7 +48,7 @@ Los getters y setters no estaban bien escritos; decian getLogin() en vez de getL
 - Hacer el DAO y ABM de producto. OKA
 - Crear los tres sectores (personal, mesa, producto) en los paquetes dao y negocio. OKA (solo producto)
 - Sería ideal hacer que sean Singleton los DAO. 
-- NO PUEDO LOGRAR QUE EL TEST SE VEA DE FORMA JERARQUICA. Me aparece test.sectorProducto!
+- NO PUEDO LOGRAR QUE EL TEST SE VEA DE FORMA JERARQUICA. Me aparece test.sectorProducto! OKA
 
 11/08/17
 - Checar que las relaciones, especialmente las many to one, la etiqueta "column" tenga bien el valor. OKA

@@ -2,6 +2,7 @@ package datos.sectorMesa;
 
 import java.util.GregorianCalendar;
 
+import negocio.Funciones;
 import datos.sectorPersonal.*;
 
 public class Ticket {
@@ -68,7 +69,7 @@ public class Ticket {
 	public String toString() {
 		return "Ticket [idTicket=" + idTicket + ", comanda=" + comanda
 				+ ", personal=" + personal + ", importeTotal=" + importeTotal
-				+ ", fechaEmision=" + fechaEmision + "]";
+				+ ", fechaEmision=" + Funciones.traerFechaCorta(fechaEmision) + "]";
 	}
 
 	@Override

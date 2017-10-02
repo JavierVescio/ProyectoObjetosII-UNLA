@@ -3,16 +3,15 @@ package datos.sectorMesa;
 public class UnidadMesa {
 	private int idUnidadMesa;
 	private Mesa mesa;
-	private int nroMesa;
-	private int cantidadComensales;
-	
-	public UnidadMesa(){}
 
-	public UnidadMesa(Mesa mesa, int nroMesa, int cantidadComensales) {
+	public UnidadMesa() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UnidadMesa(Mesa mesa) {
 		super();
 		this.mesa = mesa;
-		this.nroMesa = nroMesa;
-		this.cantidadComensales = cantidadComensales;
 	}
 
 	public int getIdUnidadMesa() {
@@ -31,27 +30,10 @@ public class UnidadMesa {
 		this.mesa = mesa;
 	}
 
-	public int getNroMesa() {
-		return nroMesa;
-	}
-
-	public void setNroMesa(int nroMesa) {
-		this.nroMesa = nroMesa;
-	}
-
-	public int getCantidadComensales() {
-		return cantidadComensales;
-	}
-
-	public void setCantidadComensales(int cantidadComensales) {
-		this.cantidadComensales = cantidadComensales;
-	}
-
 	@Override
 	public String toString() {
 		return "UnidadMesa [idUnidadMesa=" + idUnidadMesa + ", mesa=" + mesa
-				+ ", nroMesa=" + nroMesa + ", cantidadComensales="
-				+ cantidadComensales + "]";
+				+ "]";
 	}
 
 	@Override
@@ -61,19 +43,5 @@ public class UnidadMesa {
 		result = prime * result + idUnidadMesa;
 		return result;
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UnidadMesa other = (UnidadMesa) obj;
-		if (idUnidadMesa != other.idUnidadMesa)
-			return false;
-		return true;
-	}
- 
+	
 }

@@ -14,13 +14,13 @@ public class DetalleComanda {
 	}
 	
 	public DetalleComanda(Comanda comanda, Producto producto, int cantidad,
-			float precio, boolean anulada) {
+			float precio) {
 		super();
 		this.comanda = comanda;
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.precio = precio;
-		this.anulada = anulada;
+		anulada = false;
 	}
 
 	public int getIdDetalleComanda() {
@@ -53,7 +53,7 @@ public class DetalleComanda {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-	public boolean isAnulada() {
+	public boolean getAnulada() {
 		return anulada;
 	}
 	public void setAnulada(boolean anulada) {
@@ -75,23 +75,5 @@ public class DetalleComanda {
 		result = prime * result + idDetalleComanda;
 		return result;
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DetalleComanda other = (DetalleComanda) obj;
-		if (idDetalleComanda != other.idDetalleComanda)
-			return false;
-		return true;
-	}
-
-	
-	
-	
 	
 }

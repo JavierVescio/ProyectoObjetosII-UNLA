@@ -13,16 +13,11 @@
 			<!--  -->
 		<!--  -->
 	
-		<!-- 2.ATRIBUTOS DESCRIPTIVOS -->
-			<property column="nroMesa" name="nroMesa" type="int"/>
-			<property column="cantidadComensales" name="cantidadComensales" type="int"/>
-		<!--  -->
-		
 		<!-- 3.RELACIONES -->
 			<!-- *..1 -->
 				<many-to-one column="idMesa" name="mesa" class="datos.sectorMesa.Mesa" not-null="true"/>
 			<!--  -->		
-		<!--  -->
+		<!--  -->	
 		
 	</class>
 </hibernate-mapping>

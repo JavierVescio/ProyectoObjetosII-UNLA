@@ -19,8 +19,15 @@
 		<!--  -->
 		
 		<!-- 3.RELACIONES -->
+			<!-- 1..* -->
+				<set name="detalleComandas" cascade="save-update" table="detalleComanda" order-by="idDetalleComanda asc" inverse="true" lazy="true" fetch="select">
+					<key column="idComanda" not-null="true"/>
+					<one-to-many class="datos.sectorMesa.DetalleComanda"/>
+				</set>
+			<!--  -->
+		
 			<!-- *..1 -->
-				<many-to-one column="idMesa" name="mesa" class="datos.sectorMesa.Mesa" not-null="true"/>
+				<many-to-one column="idOcupacionMesa" name="ocupacionMesa" class="datos.sectorMesa.OcupacionMesa" not-null="true"/>
 			<!--  -->		
 		<!--  -->
 		

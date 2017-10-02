@@ -7,7 +7,7 @@ public class AgregarTipoCliente {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		TipoClienteABM abmTipoCliente = new TipoClienteABM();
-		String nombreTipoCliente = "Popular";
+		String nombreTipoCliente = "Deluxe";
 		
 		try {
 			int idTipoCliente = abmTipoCliente.agregarTipoCliente(nombreTipoCliente);

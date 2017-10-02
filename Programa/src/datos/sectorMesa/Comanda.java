@@ -1,33 +1,40 @@
 package datos.sectorMesa;
 
 import java.util.GregorianCalendar;
+import java.util.HashSet;
+import java.util.Set;
+
+import negocio.Funciones;
 
 public class Comanda {
 	private int idComanda;
-	private Mesa mesa;
+	private OcupacionMesa ocupacionMesa;
 	private GregorianCalendar fechaHora;
+	private Set<DetalleComanda> detalleComandas;
 	private boolean anulada;
 	
 	public Comanda() {
 	
 	}
-	public Comanda(Mesa mesa, GregorianCalendar fechaHora, boolean anulada) {
+	
+	public Comanda(OcupacionMesa ocupacionMesa) {
 		super();
-		this.mesa = mesa;
-		this.fechaHora = fechaHora;
-		this.anulada = anulada;
+		this.ocupacionMesa = ocupacionMesa;
+		fechaHora = new GregorianCalendar();
+		anulada = false;
 	}
+	
 	public int getIdComanda() {
 		return idComanda;
 	}
 	protected void setIdComanda(int idComanda) {
 		this.idComanda = idComanda;
 	}
-	public Mesa getMesa() {
-		return mesa;
+	public OcupacionMesa getOcupacionMesa() {
+		return ocupacionMesa;
 	}
-	public void setMesa(Mesa mesa) {
-		this.mesa = mesa;
+	public void setOcupacionMesa(OcupacionMesa ocupacionMesa) {
+		this.ocupacionMesa = ocupacionMesa;
 	}
 	public GregorianCalendar getFechaHora() {
 		return fechaHora;
@@ -35,18 +42,34 @@ public class Comanda {
 	public void setFechaHora(GregorianCalendar fechaHora) {
 		this.fechaHora = fechaHora;
 	}
-	public boolean isAnulada() {
+	public boolean getAnulada() {
 		return anulada;
 	}
 	public void setAnulada(boolean anulada) {
 		this.anulada = anulada;
 	}
 	
+	public Set<DetalleComanda> getDetalleComandas() {
+		return detalleComandas;
+	}
+
+	public void setDetalleComandas(Set<DetalleComanda> detalleComandas) {
+		this.detalleComandas = detalleComandas;
+	}
+	
+	public void cargarDetalleComanda(DetalleComanda detalleComanda){
+		if (detalleComandas == null) {
+			detalleComandas = new HashSet<DetalleComanda>();
+		}
+		detalleComandas.add(detalleComanda);
+	}
+	
 	@Override
 	public String toString() {
-		return "Comanda [idComanda=" + idComanda + ", mesa=" + mesa
-				+ ", fechaHora=" + fechaHora + ", anulada=" + anulada + "]";
+		return "Comanda [idComanda=" + idComanda + ", fechaHora=" + Funciones.traerFechaCorta(fechaHora)
+				+ ", anulada=" + anulada + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
