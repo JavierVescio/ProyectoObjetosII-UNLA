@@ -1,14 +1,16 @@
-package controladores;
+package controladores.sectorProducto;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.sectorPersonal.LogInABM;
-import datos.sectorPersonal.Personal;;
 
-public class ControladorLogIn extends HttpServlet {
+import negocio.sectorProducto.ProductoABM;
+
+
+public class ControladorBebida extends HttpServlet {
 
 	/**
 	 * 
@@ -29,11 +31,14 @@ public class ControladorLogIn extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try {
-			String user = request.getParameter("usuario");
-			String pass = request.getParameter("password");
-			LogInABM loginabm = new LogInABM();
-			Personal usuario = loginabm.iniciarSesion(user, pass);
-			request.setAttribute("usuario", usuario);
+			ProductoABM abmProducto = new ProductoABM();
+			
+			String nombreProducto = request.getParameter("nombreProducto");
+			String descripcionProducto = request.getParameter("descripcionProducto");
+			String notasBebida = request.getParameter("notasBebida");
+			
+			int idProducto = abmProducto.agregarBebida(nombreProducto, descripcionProducto, "", notasBebida);
+			request.setAttribute("idProducto", idProducto);
 			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");

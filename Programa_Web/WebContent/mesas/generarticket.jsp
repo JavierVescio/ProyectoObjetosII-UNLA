@@ -34,33 +34,33 @@
       <LINK rel="stylesheet" href="/Programa_Web/global.css" />
    </HEAD>
    <BODY>
-      
- 	<%@ include file="/cabecera.jsp"%>
-      
-      <div id='loginarea' class='login'>
-         <div class='demo-card-square mdl-card mdl-shadow--2dp '>
-            <div id="ingreso-sistema">
-            	<h4>Ingresar al sistema</h4>
-            </div>
-            <div class="mdl-card__supporting-text">
-               <form action="/Programa_Web/login" method="post">
-               	<div id="contenido-login">
-	                  <div
-	                     class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-	                     <input class='mdl-textfield__input' type='text' name='usuario'>
-	                     <label class='mdl-textfield__label' for='usuario'>Usuario</label>
-	                  </div>
-	                  <div
-	                     class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
-	                     <input class='mdl-textfield__input' type='password'
-	                        name='password'> <label class='mdl-textfield__label'
-	                        for='password'>Contraseña</label>
-	                  </div>
-	                  <button id="btn-ingresar" type="submit"
-	                     class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Ingresar</button>
-               	</div>
-               </form>
-            </div>
+      <%@ include file="/cabecera.jsp"%>
+  
+       <div class="mdl-grid center-items">
+         <div class="mdl-cell mdl-cell--4-col">
+         <h2 class="mdl-card__title-text">CREACIÓN DE TICKET</h2>
+         
+            <form action="/Programa_Web/generarticket" method="post">
+            
+               <div class="mdl-textfield mdl-js-textfield">
+			    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="idpersonal">
+			    <label class="mdl-textfield__label" for="sample2">ID Personal...</label>
+			    <span class="mdl-textfield__error">Lo ingresado no es un número!</span>
+			  </div>
+               
+              <div class="mdl-textfield mdl-js-textfield">
+			    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="idcomanda">
+			    <label class="mdl-textfield__label" for="sample2">ID Comanda...</label>
+			    <span class="mdl-textfield__error">Lo ingresado no es un número!</span>
+			  </div>
+               
+               <br>
+               <!-- Accent-colored raised button with ripple -->
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+				  Generar ticket
+				</button>
+            </form>
+            
          </div>
       </div>
    </body>

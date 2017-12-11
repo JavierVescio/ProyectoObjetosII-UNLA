@@ -1,14 +1,23 @@
-package controladores;
+package controladores.sectorMesa;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.sectorPersonal.LogInABM;
-import datos.sectorPersonal.Personal;;
 
-public class ControladorLogIn extends HttpServlet {
+import negocio.sectorMesa.ComandaABM;
+import negocio.sectorMesa.MesaABM;
+import negocio.sectorPersonal.PersonaABM;
+import datos.sectorMesa.Mesa;
+import datos.sectorMesa.OcupacionMesa;
+import datos.sectorPersonal.Cliente;
+import datos.sectorPersonal.Personal;
+
+
+
+public class ControladorCrearComanda extends HttpServlet {
 
 	/**
 	 * 
@@ -29,11 +38,16 @@ public class ControladorLogIn extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try {
-			String user = request.getParameter("usuario");
-			String pass = request.getParameter("password");
-			LogInABM loginabm = new LogInABM();
-			Personal usuario = loginabm.iniciarSesion(user, pass);
-			request.setAttribute("usuario", usuario);
+			ComandaABM abmComanda = new ComandaABM();
+			MesaABM abmMesa = new MesaABM();
+			
+			int idocupacionmesa = Integer.valueOf(request.getParameter("idocupacionmesa").toString());
+			
+			OcupacionMesa ocupacionMesa = abmMesa.traerOcupacionMesaPorId(idocupacionmesa);
+			int idComanda = abmComanda.agregarComanda(ocupacionMesa);
+			
+			
+			request.setAttribute("idComanda", idComanda);
 			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");

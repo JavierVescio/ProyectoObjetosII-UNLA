@@ -1,10 +1,12 @@
 package dao.sectorProducto;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+
 import dao.HibernateUtil;
 import datos.sectorProducto.*;
 

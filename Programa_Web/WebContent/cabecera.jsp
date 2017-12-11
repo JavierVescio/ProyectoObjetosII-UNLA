@@ -2,15 +2,11 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 
-   <!-- Inicio de la cabecera -->
-    <DIV class="mdl-layout mdl-layout--fixed-header ">
-    <HEADER class="mdl-layout__header">
-      <!-- Titulo -->
-      <DIV class="mdl-layout__header-row">
-   
-        <h2>                     Sistema de Gestion de Restaurant</h2>
-        
-    
-      </DIV>
-    </HEADER>
-	</DIV>
+     <header> <!--Donde va el logo y el titulo-->
+		<div class="container">
+			<div id="branding">
+				<!--Si usas div en vez de span, Acme queda solito en un renglon*/-->
+				<h2><span class=highlight>Gestión</span> de Restaurant</h2>
+			</div>
+		</div>
+	</header>

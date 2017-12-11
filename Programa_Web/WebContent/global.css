@@ -1,9 +1,57 @@
 @charset "ISO-8859-1";
 
 body {
-	background-color: #f5f5f5;
+	font: 15px/1.5 Arial,Helvetica,sans-serif;
+	padding: 0;
+	margin: 0;
+	background-color: #f4f4f4;
 	white-space: no-wrap;
 }
+
+header {
+	background:#35424a;
+	color:#ffffff;
+	border-bottom:#e8491d 3px solid; /*Dibuja una linea*/
+}
+
+/*Global*/
+.container { 
+	/*Es una clase. Por eso pongo un punto antes.
+	Si fuera un id pondria #*/
+	width: 90%;
+	margin: auto; /*Mueve los containers al medio*/
+	overflow: hidden;
+}
+
+#contenido-login{
+	text-align: center;
+	display:block;
+	margin: auto;
+	width: 80%;
+}
+
+/*lista*/
+ul#lista li{
+	list-style: none;
+	padding: 20px;
+	border: #cccccc solid 1px;
+	margin-bottom: 5px;
+	background: #e6e6e6;
+}
+
+#btn-ingresar {
+	text-align: center;
+	display:block;
+	margin: auto;
+	margin-top: 25px;
+	width: 80%;
+}
+
+header .highlight{
+	color:#e8491d;
+}
+
+
 
 h2{
 
@@ -16,6 +64,18 @@ h2{
 .login .demo-card-square.mdl-card {
   width: 320px;
   height: 400px;
+}
+
+#ingreso-sistema{
+	text-align: center;
+	padding: 15px;
+	color:#ffffff;
+	font-weight: bold;
+	background-color: #0404B4;
+}
+
+#loginarea{
+	margin-top: 50px;
 }
 
 .login .demo-card-square > .mdl-card__title h2{
@@ -42,10 +102,11 @@ h2{
 }
 
 .login .demo-card-square.mdl-card {
-  width: 320px;
-  height: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  /*width: 320px;*/
+  	display: block;
+  	margin: auto; /*Mueve los containers al medio*/
+	width: 35%;
+	height: 350px;
 }
 .login .demo-card-square > .mdl-card__title h2{
  padding-bottom:70px;
@@ -65,7 +126,11 @@ h2{
 }
 
 .mdl-card__title>h2 {
-    color: #fff;
+    color: #ffffff;
+}
+
+.mdl-card>.productos {
+    background: url("../img/salon.png") bottom 50% right 0% no-repeat #FF0084;
 }
 
 .mdl-card>.comandas {
@@ -77,11 +142,7 @@ h2{
 }
 
 .mdl-card>.facturacion {
-    background: url("../img/facturacion.png") bottom 50% right 0% no-repeat #14BAE8;
-}
-
-.mdl-card>.otros {
-    background: url("../img/otros.png") bottom 50% right 0% no-repeat #B200FF;
+    background: url("../img/facturacion.png") bottom 50% right 0% no-repeat #527EDD;
 }
 
 .banner-index {
@@ -95,3 +156,10 @@ h2{
     line-height: 100px;
     text-align: center; 
 }
+
+.mdl-grid.center-items {
+  justify-content: center;
+}
+
+      
+    

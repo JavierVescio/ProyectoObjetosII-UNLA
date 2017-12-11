@@ -1,14 +1,18 @@
-package controladores;
+package controladores.sectorProducto;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.sectorPersonal.LogInABM;
-import datos.sectorPersonal.Personal;;
 
-public class ControladorLogIn extends HttpServlet {
+import datos.sectorProducto.Producto;
+import negocio.sectorProducto.ProductoABM;
+
+
+public class ControladorBuscarProducto extends HttpServlet {
 
 	/**
 	 * 
@@ -29,12 +33,14 @@ public class ControladorLogIn extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try {
-			String user = request.getParameter("usuario");
-			String pass = request.getParameter("password");
-			LogInABM loginabm = new LogInABM();
-			Personal usuario = loginabm.iniciarSesion(user, pass);
-			request.setAttribute("usuario", usuario);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+			ProductoABM abmProducto = new ProductoABM();
+			
+			String nombreProducto = request.getParameter("nombreProducto");
+			
+			List<Producto> listaProductos = abmProducto.traerProductoPorNombre(nombreProducto);
+			
+			request.setAttribute("listaProductos", listaProductos);
+			request.getRequestDispatcher("/productos/listado.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");
 		}

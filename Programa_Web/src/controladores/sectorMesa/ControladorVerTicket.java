@@ -1,14 +1,20 @@
-package controladores;
+package controladores.sectorMesa;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.sectorPersonal.LogInABM;
-import datos.sectorPersonal.Personal;;
 
-public class ControladorLogIn extends HttpServlet {
+import negocio.sectorMesa.ComandaABM;
+import negocio.sectorMesa.MesaABM;
+import negocio.sectorMesa.TicketABM;
+import datos.sectorMesa.*;
+
+
+
+public class ControladorVerTicket extends HttpServlet {
 
 	/**
 	 * 
@@ -29,12 +35,15 @@ public class ControladorLogIn extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try {
-			String user = request.getParameter("usuario");
-			String pass = request.getParameter("password");
-			LogInABM loginabm = new LogInABM();
-			Personal usuario = loginabm.iniciarSesion(user, pass);
-			request.setAttribute("usuario", usuario);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+			TicketABM abmTicket = new TicketABM();
+			
+			int idticket = Integer.valueOf(request.getParameter("idticket").toString());
+			
+			Ticket ticket = abmTicket.traerTicketPorIdConComandaYPersonal(idticket);
+			
+			
+			request.setAttribute("ticket", ticket);
+			request.getRequestDispatcher("/mesas/ticket.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");
 		}

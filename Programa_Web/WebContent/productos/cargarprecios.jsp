@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
+   
+<%@ page import="datos.sectorProducto.*" %>
+<%@ page import="negocio.sectorProducto.*" %>
+<%@ page import="java.util.List" %>    
+   
 <!DOCTYPE html>
 <HTML>
    <HEAD>
@@ -34,34 +39,18 @@
       <LINK rel="stylesheet" href="/Programa_Web/global.css" />
    </HEAD>
    <BODY>
-      
- 	<%@ include file="/cabecera.jsp"%>
-      
-      <div id='loginarea' class='login'>
-         <div class='demo-card-square mdl-card mdl-shadow--2dp '>
-            <div id="ingreso-sistema">
-            	<h4>Ingresar al sistema</h4>
-            </div>
-            <div class="mdl-card__supporting-text">
-               <form action="/Programa_Web/login" method="post">
-               	<div id="contenido-login">
-	                  <div
-	                     class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-	                     <input class='mdl-textfield__input' type='text' name='usuario'>
-	                     <label class='mdl-textfield__label' for='usuario'>Usuario</label>
-	                  </div>
-	                  <div
-	                     class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
-	                     <input class='mdl-textfield__input' type='password'
-	                        name='password'> <label class='mdl-textfield__label'
-	                        for='password'>Contraseña</label>
-	                  </div>
-	                  <button id="btn-ingresar" type="submit"
-	                     class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Ingresar</button>
-               	</div>
-               </form>
-            </div>
-         </div>
-      </div>
+      <%@ include file="/cabecera.jsp"%>
+		
+		<table border="1">
+			<%ProductoABM abm = new ProductoABM();
+			List<Producto> productos = abm.traerProductos();
+			for(Producto producto:productos){%>
+				<tr>
+					<td><%=producto.getIdProducto()%></td>
+					<td><%=producto.getNombre()%></td>
+					<td><%=producto.getDescripcion()%></td>
+				</tr>
+			<%}%>
+		</table>
    </body>
 </html>

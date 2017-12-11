@@ -34,33 +34,30 @@
       <LINK rel="stylesheet" href="/Programa_Web/global.css" />
    </HEAD>
    <BODY>
-      
- 	<%@ include file="/cabecera.jsp"%>
-      
-      <div id='loginarea' class='login'>
-         <div class='demo-card-square mdl-card mdl-shadow--2dp '>
-            <div id="ingreso-sistema">
-            	<h4>Ingresar al sistema</h4>
-            </div>
-            <div class="mdl-card__supporting-text">
-               <form action="/Programa_Web/login" method="post">
-               	<div id="contenido-login">
-	                  <div
-	                     class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-	                     <input class='mdl-textfield__input' type='text' name='usuario'>
-	                     <label class='mdl-textfield__label' for='usuario'>Usuario</label>
-	                  </div>
-	                  <div
-	                     class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
-	                     <input class='mdl-textfield__input' type='password'
-	                        name='password'> <label class='mdl-textfield__label'
-	                        for='password'>Contraseña</label>
-	                  </div>
-	                  <button id="btn-ingresar" type="submit"
-	                     class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Ingresar</button>
-               	</div>
-               </form>
-            </div>
+      <%@ include file="/cabecera.jsp"%>
+  
+      <div class="mdl-grid center-items">
+         <div class="mdl-cell mdl-cell--4-col">
+         <h2 class="mdl-card__title-text">ALTA DE PLATO</h2>
+            <form action="/Programa_Web/altaplato" method="post">
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3" name="nombreProducto">
+                  <label class="mdl-textfield__label" for="sample3">Nombre producto</label>
+               </div>
+               <div class="mdl-textfield mdl-js-textfield">
+                  <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" name="descripcionProducto"></textarea>
+                  <label class="mdl-textfield__label" for="sample5">Descripción producto (opcional)</label>
+               </div>
+               <div class="mdl-textfield mdl-js-textfield">
+                  <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" name="notasPlato"></textarea>
+                  <label class="mdl-textfield__label" for="sample5">Nota plato (opcional)</label>
+               </div>
+               <br>
+               <!-- Accent-colored raised button with ripple -->
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+				  Agregar plato
+				</button>
+            </form>
          </div>
       </div>
    </body>

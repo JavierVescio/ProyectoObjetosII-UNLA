@@ -12,12 +12,116 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+
 	<servlet>
 		<servlet-name>ControladorLogIn</servlet-name>
-		<servlet-class>controladores.ControladorLogIn</servlet-class>
+		<servlet-class>controladores.ControladorLogIn</servlet-class>	
 	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>ControladorLogIn</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+	
+	
+	<!-- SECTOR PRODUCTO -->
+	
+	<servlet>
+		<servlet-name>ControladorPlato</servlet-name>
+		<servlet-class>controladores.sectorProducto.ControladorPlato</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControladorPlato</servlet-name>
+		<url-pattern>/altaplato</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ControladorBebida</servlet-name>
+		<servlet-class>controladores.sectorProducto.ControladorBebida</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControladorBebida</servlet-name>
+		<url-pattern>/altabebida</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ControladorBuscarProducto</servlet-name>
+		<servlet-class>controladores.sectorProducto.ControladorBuscarProducto</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControladorBuscarProducto</servlet-name>
+		<url-pattern>/buscarproducto</url-pattern>
+	</servlet-mapping>	
+	
+	
+	
+	
+	
+	
+	<!-- SECTOR MESA -->
+	
+	<servlet>
+		<servlet-name>ControladorOcuparMesa</servlet-name>
+		<servlet-class>controladores.sectorMesa.ControladorOcuparMesa</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControladorOcuparMesa</servlet-name>
+		<url-pattern>/ocuparmesa</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ControladorCrearComanda</servlet-name>
+		<servlet-class>controladores.sectorMesa.ControladorCrearComanda</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControladorCrearComanda</servlet-name>
+		<url-pattern>/crearcomanda</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ControladorCrearDetalleComanda</servlet-name>
+		<servlet-class>controladores.sectorMesa.ControladorCrearDetalleComanda</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControladorCrearDetalleComanda</servlet-name>
+		<url-pattern>/creardetallecomanda</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ControladorCrearTicket</servlet-name>
+		<servlet-class>controladores.sectorMesa.ControladorCrearTicket</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControladorCrearTicket</servlet-name>
+		<url-pattern>/generarticket</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>ControladorVerTicket</servlet-name>
+		<servlet-class>controladores.sectorMesa.ControladorVerTicket</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControladorVerTicket</servlet-name>
+		<url-pattern>/verticket</url-pattern>
+	</servlet-mapping>		
+	
+	<servlet>
+		<servlet-name>ControladorVerComanda</servlet-name>
+		<servlet-class>controladores.sectorMesa.ControladorVerComanda</servlet-class>	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControladorVerComanda</servlet-name>
+		<url-pattern>/vercomanda</url-pattern>
+	</servlet-mapping>			
+	
+	
 </web-app>
