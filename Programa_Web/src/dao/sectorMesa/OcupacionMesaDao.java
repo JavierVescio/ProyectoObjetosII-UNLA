@@ -100,7 +100,7 @@ public class OcupacionMesaDao {
 
 		try {
 			iniciaOperacion();
-			lista = session.createQuery("from OcupacionMesa").list();
+			lista = session.createQuery("from OcupacionMesa om inner join fetch Cliente c inner join fetch Mesa m").list();
 		}finally {
 			session.close();
 		}

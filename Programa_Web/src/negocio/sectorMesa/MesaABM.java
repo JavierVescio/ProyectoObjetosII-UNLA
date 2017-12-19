@@ -130,6 +130,13 @@ public class MesaABM {
 		return listaMesa;
 	}
 	
+	public List<OcupacionMesa> traerOcupacionMesas() throws Exception {
+		List<OcupacionMesa> listaOcupacionMesas = daoOcupacionMesa.traerOcupacionMesas();
+		if (listaOcupacionMesas.isEmpty())
+			throw new Exception("No se obtuvo resultados");
+		return listaOcupacionMesas;
+	}
+	
 	public UnidadMesa traerUnidadMesaPorId(int idUnidadMesa) throws Exception{
 		UnidadMesa unidadMesa = daoUnidadMesa.traerUnidadMesaPorId(idUnidadMesa);
 		if (unidadMesa==null)

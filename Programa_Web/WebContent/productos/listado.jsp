@@ -36,6 +36,7 @@
 <SCRIPT src="/Programa_Web/js/global.js" type="text/javascript"></SCRIPT>
 <!-- Llamo a mis propios CSS personalizados globales -->
 <LINK rel="stylesheet" href="/Programa_Web/global.css" />
+
 </HEAD>
 <BODY>
 	<%@ include file="/cabecera.jsp"%>

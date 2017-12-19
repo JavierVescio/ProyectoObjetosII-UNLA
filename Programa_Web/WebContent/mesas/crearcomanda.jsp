@@ -1,5 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@page import="negocio.sectorMesa.MesaABM"%>
+<%@page import="datos.sectorMesa.*"%>
+<%@page import="java.util.List"%>
+
 <!DOCTYPE html>
 <HTML>
 <HEAD>
@@ -32,6 +38,10 @@
 <SCRIPT src="/Programa_Web/js/global.js" type="text/javascript"></SCRIPT>
 <!-- Llamo a mis propios CSS personalizados globales -->
 <LINK rel="stylesheet" href="/Programa_Web/global.css" />
+
+
+
+
 </HEAD>
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
@@ -39,8 +49,9 @@
 	<div class="mdl-grid center-items">
 		<div class="mdl-cell mdl-cell--4-col">
 			<h2 class="mdl-card__title-text">CREACION DE COMANDA</h2>
-
 			<form action="/Programa_Web/crearcomanda" method="post">
+				<br>
+				<div id="table_div"></div>
 
 				<div class="mdl-textfield mdl-js-textfield">
 					<input class="mdl-textfield__input" type="text"
@@ -55,7 +66,6 @@
 					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
 					Crear comanda</button>
 			</form>
-
 		</div>
 	</div>
 </body>
