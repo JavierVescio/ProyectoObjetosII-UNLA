@@ -34,8 +34,7 @@
       <LINK rel="stylesheet" href="/Programa_Web/global.css" />
    </HEAD>
    <BODY>
-   <%@ include file="/cabecera.jsp"%>
-   
+  
       <div class="mdl-grid card-centered">
       
          <div class="mdl-cell mdl-cell--3-col mdl-card mdl-shadow--2dp">

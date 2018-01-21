@@ -36,7 +36,7 @@ public class ControladorLogIn extends HttpServlet {
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
 		} catch (Exception e) {
-			response.sendError(500, "Error Intente de nuevo");
+			response.sendError(500, "Usuario o Contraseña Incorrecta");
 		}
 	}
 
