@@ -2,6 +2,7 @@ package negocio.sectorPersonal;
 
 import dao.sectorPersonal.*;
 import datos.sectorPersonal.*;
+import java.util.List;
 
 public class PersonaABM {
 	PersonaDao dao = new PersonaDao();
@@ -56,6 +57,13 @@ public class PersonaABM {
 		if (personal==null)
 			throw new Exception("personal nulo");
 		return personal;
+	}
+	
+	public List<Cliente> traerClientes() throws Exception {
+		List<Cliente> lista = dao.traerClientes();
+		if (lista.isEmpty())
+			throw new Exception("lista nulo");
+		return lista;
 	}
 /* --- */
 }

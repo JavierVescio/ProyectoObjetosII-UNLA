@@ -1,11 +1,14 @@
 package dao.sectorPersonal;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import dao.HibernateUtil;
 import datos.sectorPersonal.*;
+import datos.sectorProducto.Producto;
 
 public class PersonaDao {
 	private static Session session;
@@ -112,6 +115,20 @@ public class PersonaDao {
 			session.close();
 		}
 		return objeto;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Cliente> traerClientes() throws HibernateException {
+		List<Cliente> lista=null;
+		
+		
+		try {
+			iniciaOperacion();
+			lista = session.createQuery("from Cliente").list();
+		}finally{
+			session.close();
+		}
+		return lista;
 	}
 	
 	
