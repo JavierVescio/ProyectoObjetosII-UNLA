@@ -65,5 +65,15 @@ public class PersonaABM {
 			throw new Exception("lista nulo");
 		return lista;
 	}
+
+	public List<Personal> traerCamareros() throws Exception {
+		List<Personal> lista = dao.traerCamareros();
+		if (lista.isEmpty())
+			throw new Exception("lista nulo");
+		return lista;
+	}
+	
+	
+	
 /* --- */
 }

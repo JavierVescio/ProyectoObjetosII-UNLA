@@ -50,6 +50,11 @@ public class ControladorCrearDetalleComanda extends HttpServlet {
 			int idproducto = Integer.valueOf(request.getParameter("idproducto").toString());
 			int cantidad = Integer.valueOf(request.getParameter("cantidad").toString());
 			
+			System.out.println("idcomanda: " + idcomanda);
+			System.out.println("idproducto: " + idproducto);
+			System.out.println("cantidad: " + cantidad);
+			
+			
 			Comanda comanda = abmComanda.traerComandaYDetalleComandasPorId(idcomanda);
 			Producto producto = abmProducto.traerProductoPorId(idproducto);
 			

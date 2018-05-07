@@ -1,5 +1,7 @@
 package negocio.sectorMesa;
 
+import java.util.List;
+
 import negocio.sectorProducto.PrecioProductoABM;
 import dao.sectorMesa.ComandaDao;
 import dao.sectorMesa.MesaDao;
@@ -83,6 +85,14 @@ public class ComandaABM {
 			throw new Exception("comanda nula");
 		return comanda;
 	}
+	
+	public List<Comanda> traerComandas() throws Exception {
+		List<Comanda> listaComanda = daoComanda.traerComandas();
+		if (listaComanda.isEmpty())
+			throw new Exception("No se obtuvo resultados");
+		return listaComanda;
+	}
+	
 	
 	private PrecioProducto calcularPrecio(Comanda comanda, Producto producto) throws Exception {
 		Comanda comandaAux = daoComanda.traerComandaYDetalleComandasPorId(comanda.getIdComanda());

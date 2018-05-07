@@ -131,6 +131,20 @@ public class PersonaDao {
 		return lista;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Personal> traerCamareros() throws HibernateException {
+		List<Personal> lista=null;
+		
+		
+		try {
+			iniciaOperacion();
+			lista = session.createQuery("from Personal where idTipoPersonal = 1").list();
+		}finally{
+			session.close();
+		}
+		return lista;
+	}
+	
 	
 /* --- */
 	

@@ -2,7 +2,9 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@page import="negocio.sectorPersonal.*"%>
+<%@page import="negocio.sectorMesa.*"%>
 <%@page import="datos.sectorPersonal.*"%>
+<%@page import="datos.sectorMesa.*"%>
 <%@page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -47,17 +49,28 @@
 <script type="text/javascript"
 	src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		var table = $('#datatable').DataTable();
 
-		$('#datatable tbody').on('click', 'tr', function() {
-			var data = table.row(this).data();
-			
-			document.getElementById("txtPrueba").value = data[0];
-			
-			alert('ID cliente hidden: ' + document.getElementById("txtPrueba").value);
-		});
-	});
+	$(document).ready(function() {
+	    var tableC = $('#tablaCliente').DataTable();
+	    $('#tablaCliente tbody').on( 'click', 'tr', function () {
+	    		tableC.$('tr.selected').removeClass('selected');
+	        	$(this).addClass('selected');
+	    	    var data = tableC.row(this).data();
+	    	    document.getElementById("lblClienteSeleccionado").value = "Cliente seleccionado: " + data[1] + ", " + data[2];
+	    	    document.getElementById("hiddenIdCliente").value = data[0];
+	    } );
+	    
+	    var tableD = $('#tablaCamarero').DataTable();
+	    $('#tablaCamarero tbody').on( 'click', 'tr', function () {
+	    		tableD.$('tr.selected').removeClass('selected');
+	        	$(this).addClass('selected');
+	    	    var data = tableD.row(this).data();
+	    	    document.getElementById("lblCamareroSeleccionado").value = "Camarero seleccionado: " + data[1] + ", " + data[2];
+	    	    document.getElementById("hiddenIdCamarero").value = data[0];
+	    } );
+
+	} );
+	
 </script>
 <!--  -->
 
@@ -67,94 +80,122 @@
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
 
-	<div class="mdl-grid center-items">
-
-		<h2 class="mdl-card__title-text">OCUPACION DE MESA</h2>
-
-		<form action="/Programa_Web/ocuparmesa" method="post">
-
-
-
-			<div class="contenedortabla">
-				<table id="datatable">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Apellido</th>
-							<th>Nombre</th>
-							<th>DNI</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							PersonaABM abmPersona = new PersonaABM();
-							List<Cliente> lista = abmPersona.traerClientes();
-							for (Cliente cliente : lista) {
-						%><tr>
-							<td><%=cliente.getIdPersona()%></td>
-							<td><%=cliente.getApellido()%></td>
-							<td><%=cliente.getNombre()%></td>
-							<td><%=cliente.getDni()%></td>
-						</tr>
-						<%
-							}
-						%>
-					</tbody>
-				</table>
-			</div>
-
-
-			<input type="hidden" id="txtPrueba" value="-">
-			
-			<input type="Button" name="btnPrueba" value="Cambiar texto" onclick="myFunction()"/>
-			
-			<!-- <script>
-				function myFunction() {
-				    document.getElementById("text").style.color = "red";
-				}
-			</script>-->
-
-
-			<div class="mdl-textfield mdl-js-textfield">
-				<input class="mdl-textfield__input" type="text"
-					pattern="-?[0-9]*(\.[0-9]+)?" id="idNumCliente" name="idcliente">
-				<label class="mdl-textfield__label" for="sample2">ID
-					Cliente...</label> <span class="mdl-textfield__error">Lo ingresado
-					no es un número!</span>
-			</div>
-
-			<div class="mdl-textfield mdl-js-textfield">
-				<input class="mdl-textfield__input" type="text"
-					pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="idcamarero">
-				<label class="mdl-textfield__label" for="sample2">ID
-					Camarero...</label> <span class="mdl-textfield__error">Lo ingresado
-					no es un número!</span>
-			</div>
-
-			<div class="mdl-textfield mdl-js-textfield">
-				<input class="mdl-textfield__input" type="text"
-					pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="idmesa"> <label
-					class="mdl-textfield__label" for="sample2">ID Mesa...</label> <span
-					class="mdl-textfield__error">Lo ingresado no es un número!</span>
-			</div>
-
-			<div class="mdl-textfield mdl-js-textfield">
-				<input class="mdl-textfield__input" type="text"
-					pattern="-?[0-9]*(\.[0-9]+)?" id="sample2"
-					name="cantidadcomensales"> <label
-					class="mdl-textfield__label" for="sample2">Cantidad de
-					comensales...</label> <span class="mdl-textfield__error">Lo
-					ingresado no es un número!</span>
-			</div>
-
-			<br>
-			<!-- Accent-colored raised button with ripple -->
-			<button
-				class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-				Registrar ocupación de mesa</button>
-		</form>
-
+	<div class="subtitulo">
+		<!--Donde va el logo y el titulo-->
+		<div class="container">
+			<h3>Acomodar clientes</h3>
+		</div>
 	</div>
+
+
+	<h5>1.- Selección de cliente</h5>
+
+	<div class="contenedortabla">
+		<table id="tablaCliente">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Apellido</th>
+					<th>Nombre</th>
+					<th>DNI</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+					PersonaABM abmPersona = new PersonaABM();
+					List<Cliente> lista = abmPersona.traerClientes();
+					for (Cliente cliente : lista) {
+				%><tr>
+					<td><%=cliente.getIdPersona()%></td>
+					<td><%=cliente.getApellido()%></td>
+					<td><%=cliente.getNombre()%></td>
+					<td><%=cliente.getDni()%></td>
+				</tr>
+				<%
+					}
+				%>
+			</tbody>
+		</table>
+	</div>
+
+	<h5>2.- Selección de camarero</h5>
+	
+	
+	<div class="contenedortabla">
+		<table id="tablaCamarero">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Apellido</th>
+					<th>Nombre</th>
+					<th>DNI</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+					List<Personal> listaPersonal = abmPersona.traerCamareros();
+					for (Personal personal : listaPersonal) {
+				%><tr>
+					<td><%=personal.getIdPersona()%></td>
+					<td><%=personal.getApellido()%></td>
+					<td><%=personal.getNombre()%></td>
+					<td><%=personal.getDni()%></td>
+				</tr>
+				<%
+					}
+				%>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div class="mdl-textfield mdl-js-textfield">
+		<input class="mdl-textfield__input" type="text"
+			id="lblClienteSeleccionado" readonly>
+	</div>
+	<br>
+	<div class="mdl-textfield mdl-js-textfield">
+		<input class="mdl-textfield__input" type="text"
+			id="lblCamareroSeleccionado" readonly>
+	</div>
+	<br>
+
+	<form action="/Programa_Web/ocuparmesa" method="post">
+		<input type="hidden" id="hiddenIdCliente" name="idcliente"> 
+		<input type="hidden" id="hiddenIdCamarero" name="idcamarero"> 
+		<!-- <input type="hidden" id="hiddenIdMesa" name="idmesa">
+		<input type="hidden" id="hiddenIdCantidadComensales" name="cantidadcomensales">-->
+		
+		<h5>3.- Selección de mesa</h5>
+		<select name="idmesa">
+			<%
+				MesaABM abmMesa = new MesaABM();
+				List<Mesa> listaMesas = abmMesa.traerMesas();
+				for (Mesa mesa : listaMesas) {
+					if (mesa.getEstado() == 0) {
+					%>
+						<option value="<%=mesa.getIdMesa()%>"><%="Nº "+mesa.getNroMesa()%></option>
+					<%
+				}}
+			%>
+		</select>	
+		<br>
+		<h5>4.- Cantidad de comensales</h5>
+		<div class="mdl-textfield mdl-js-textfield">
+			<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="cantidadcomensales">
+			<label class="mdl-textfield__label" for="sample2">Cantidad de comensales...</label>
+			<span class="mdl-textfield__error">Lo ingresado no es un número!</span>
+		</div>
+		<br>
+		<br>
+
+		<!-- Accent-colored raised button with ripple -->
+		<button
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+			Registrar ocupación de mesa</button>
+	</form>
+
+
 
 </body>
 </html>

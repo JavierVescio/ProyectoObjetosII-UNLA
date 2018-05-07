@@ -261,4 +261,19 @@ public class Funciones {
 	public static int traerSeg(GregorianCalendar fecha) {
 		return fecha.get(Calendar.SECOND);
 	}
+	
+	public static String traerHorario(GregorianCalendar fecha){
+		String hora = String.valueOf(traerHora(fecha));
+		String min = String.valueOf(traerMin(fecha));
+		String seg = String.valueOf(traerSeg(fecha));
+		
+		if (hora.length() == 1)
+			hora = "0"+hora;
+		if (min.length() == 1)
+			min = "0"+min;
+		if (seg.length() == 1)
+			seg = "0"+seg;
+		
+		return hora + ":" + min + ":" + seg;
+	}
 }

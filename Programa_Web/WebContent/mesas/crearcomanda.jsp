@@ -1,8 +1,11 @@
 
+<%@page import="negocio.Funciones"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@page import="negocio.sectorMesa.MesaABM"%>
+<%@page import="negocio.sectorPersonal.*"%>
+<%@page import="negocio.sectorMesa.*"%>
+<%@page import="datos.sectorPersonal.*"%>
 <%@page import="datos.sectorMesa.*"%>
 <%@page import="java.util.List"%>
 
@@ -41,32 +44,87 @@
 
 
 
+<!-- Esto se usa para el datatable -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+<script type="text/javascript"
+	src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+	    var tableC = $('#tablaOcupacionMesa').DataTable();
+	    $('#tablaOcupacionMesa tbody').on( 'click', 'tr', function () {
+	    		tableC.$('tr.selected').removeClass('selected');
+	        	$(this).addClass('selected');
+	    	    var data = tableC.row(this).data();
+	    	    document.getElementById("hiddenIdOcupacionMesa").value = data[0];
+	    	    document.getElementById("btnCrearComanda").disabled = false;
+	    	    
+	    } );
+	} );
+	
+</script>
+<!--  -->
+
 
 </HEAD>
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
-
-	<div class="mdl-grid center-items">
-		<div class="mdl-cell mdl-cell--4-col">
-			<h2 class="mdl-card__title-text">CREACION DE COMANDA</h2>
-			<form action="/Programa_Web/crearcomanda" method="post">
-				<br>
-				<div id="table_div"></div>
-
-				<div class="mdl-textfield mdl-js-textfield">
-					<input class="mdl-textfield__input" type="text"
-						pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="idocupacionmesa">
-					<label class="mdl-textfield__label" for="sample2">ID
-						Ocupacion Mesa...</label> <span class="mdl-textfield__error">Lo
-						ingresado no es un número!</span>
-				</div>
-				<br>
-				<!-- Accent-colored raised button with ripple -->
-				<button
-					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-					Crear comanda</button>
-			</form>
+	
+	<div class="subtitulo">
+		<!--Donde va el logo y el titulo-->
+		<div class="container">
+			<h3>Creación de comanda</h3>
 		</div>
 	</div>
+	
+	<h5>Mesas ocupadas</h5>
+	
+	<div class="contenedortabla">
+		<table id="tablaOcupacionMesa">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Mesa Nº</th>
+					<th>Cliente</th>
+					<th>Camarero</th>
+					<th>Cantidad comensales</th>
+					<th>Horario apertura mesa</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+					MesaABM abmMesa = new MesaABM();
+					List<OcupacionMesa> listaOcupacionMesa = abmMesa.traerOcupacionMesas();
+					for (OcupacionMesa ocupacionMesa : listaOcupacionMesa) {
+						Cliente cliente = ocupacionMesa.getCliente();
+						Personal camarero = ocupacionMesa.getCamarero();
+						Mesa mesa = ocupacionMesa.getMesa();
+						String fecha_hora_inicio = Funciones.traerFechaLarga(ocupacionMesa.getFechaHoraInicio()) + " - " + Funciones.traerHorario(ocupacionMesa.getFechaHoraInicio());  
+				%><tr>
+					<td><%=ocupacionMesa.getIdOcupacionMesa()%></td>
+					<td><%=mesa.getNroMesa()%></td>
+					<td><%=cliente.getApellido() + " " + cliente.getNombre()%></td>
+					<td><%=camarero.getApellido() + " " + camarero.getNombre()%></td>
+					<td><%=ocupacionMesa.getCantidadComensales()%></td>
+					<td><%=fecha_hora_inicio%></td>
+				</tr>
+				<%
+					}
+				%>
+			</tbody>
+		</table>
+	</div>
+	<form action="/Programa_Web/crearcomanda" method="post">
+		<!-- idocupacionmesa -->
+		<input id="hiddenIdOcupacionMesa" type="hidden" name="idocupacionmesa" value="-1"> 
+		
+		<!-- Accent-colored raised button with ripple -->
+		<button id="btnCrearComanda" disabled
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+			Crear comanda</button>
+	</form>
 </body>
 </html>

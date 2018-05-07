@@ -23,6 +23,17 @@ header {
 	overflow: hidden;
 }
 
+.titulo {
+  width: 50%;
+  margin: 0 auto;
+}
+
+header.subtitulo {
+	
+	width: 100%;
+	margin: auto;
+}
+
 #contenido-login{
 	text-align: center;
 	display:block;

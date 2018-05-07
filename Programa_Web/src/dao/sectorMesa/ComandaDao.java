@@ -89,7 +89,7 @@ public class ComandaDao {
 
 		try {
 			iniciaOperacion();
-			lista = session.createQuery("from Comanda").list();
+			lista = session.createQuery("from Comanda c inner join fetch c.ocupacionMesa o inner join fetch o.cliente inner join fetch o.camarero inner join fetch o.mesa order by c.idComanda asc").list();
 		}finally {
 			session.close();
 		}
