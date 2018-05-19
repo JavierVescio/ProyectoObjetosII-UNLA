@@ -35,6 +35,8 @@
    </HEAD>
    <BODY>
       <%@ include file="/cabecera.jsp"%>
+  	
+  	<a href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
   
       <div class="mdl-grid center-items">
          <div class="mdl-cell mdl-cell--4-col">

@@ -79,6 +79,8 @@
    <BODY>
       <%@ include file="/cabecera.jsp"%>
       
+      <a href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
+      
      <div class="subtitulo">
 		<!--Donde va el logo y el titulo-->
 		<div class="container">
