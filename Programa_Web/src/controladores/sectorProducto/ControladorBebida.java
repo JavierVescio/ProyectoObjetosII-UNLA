@@ -37,9 +37,29 @@ public class ControladorBebida extends HttpServlet {
 			String descripcionProducto = request.getParameter("descripcionProducto");
 			String notasBebida = request.getParameter("notasBebida");
 			
-			int idProducto = abmProducto.agregarBebida(nombreProducto, descripcionProducto, "", notasBebida);
-			request.setAttribute("idProducto", idProducto);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+			 if (nombreProducto.isEmpty()){
+				request.setAttribute("msgError", "El nombre del producto no puede quedar en blanco");
+				request.getRequestDispatcher("/productos/cargarbebida.jsp").forward(request, response);
+			}
+			 else{
+					int idProducto = abmProducto.agregarBebida(nombreProducto, descripcionProducto, "", notasBebida);
+					request.setAttribute("msgTodoBien", "Creacion exitosa de bebida con nombre " + nombreProducto);
+					request.getRequestDispatcher("/productos/cargarbebida.jsp").forward(request, response);
+			 }
+			
+
+			
+			/*
+			 if (nombreProducto.isEmpty()){
+				request.setAttribute("msgError", "El nombre del producto no puede quedar en blanco");
+				request.getRequestDispatcher("/productos/cargarplato.jsp").forward(request, response);
+			}
+			else {
+				int idProducto = abmProducto.agregarPlato(nombreProducto, descripcionProducto, "", notasPlato);
+				request.setAttribute("msgTodoBien", "Creacion exitosa de plato con nombre " + nombreProducto);
+				request.getRequestDispatcher("/productos/cargarplato.jsp").forward(request, response);	
+			}
+			 * */
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");
 		}

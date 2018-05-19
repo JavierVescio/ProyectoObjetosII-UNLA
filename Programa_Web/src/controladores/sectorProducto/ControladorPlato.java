@@ -37,13 +37,16 @@ public class ControladorPlato extends HttpServlet {
 			String descripcionProducto = request.getParameter("descripcionProducto");
 			String notasPlato = request.getParameter("notasPlato");
 			
-			int idProducto = abmProducto.agregarPlato(nombreProducto, descripcionProducto, "", notasPlato);
-			/*Personal usuario = loginabm.iniciarSesion(user, pass);
-			request.setAttribute("usuario", usuario);
-			System.out.println ("Hola Mundo");*/
-			System.out.println ("Carga de plaaato");
-			request.setAttribute("idProducto", idProducto);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+			//Solo el nombre es obligatorio. Si entro a la funcion agregarPlato del ABM se ve claramente que es asi.
+			if (nombreProducto.isEmpty()){
+				request.setAttribute("msgError", "El nombre del producto no puede quedar en blanco");
+				request.getRequestDispatcher("/productos/cargarplato.jsp").forward(request, response);
+			}
+			else {
+				int idProducto = abmProducto.agregarPlato(nombreProducto, descripcionProducto, "", notasPlato);
+				request.setAttribute("msgTodoBien", "Creacion exitosa de plato con nombre " + nombreProducto);
+				request.getRequestDispatcher("/productos/cargarplato.jsp").forward(request, response);	
+			}
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");
 		}

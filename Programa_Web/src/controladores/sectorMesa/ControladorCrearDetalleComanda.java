@@ -45,22 +45,45 @@ public class ControladorCrearDetalleComanda extends HttpServlet {
 			ComandaABM abmComanda = new ComandaABM();
 			DetalleComandaABM abmDetalleComanda = new DetalleComandaABM();
 			ProductoABM abmProducto = new ProductoABM();
-			
+
 			int idcomanda = Integer.valueOf(request.getParameter("idcomanda").toString());
 			int idproducto = Integer.valueOf(request.getParameter("idproducto").toString());
-			int cantidad = Integer.valueOf(request.getParameter("cantidad").toString());
+			int cantidad = 0;
 			
+			String strCantidad = request.getParameter("cantidad").toString();
+			if (strCantidad.isEmpty() == false)
+				cantidad = Integer.valueOf(strCantidad);
+			
+			System.out.println("CREAR DETALLE COMANDA");
 			System.out.println("idcomanda: " + idcomanda);
 			System.out.println("idproducto: " + idproducto);
-			System.out.println("cantidad: " + cantidad);
+			System.out.println("strCantidad: " + strCantidad);
 			
-			
-			Comanda comanda = abmComanda.traerComandaYDetalleComandasPorId(idcomanda);
-			Producto producto = abmProducto.traerProductoPorId(idproducto);
-			int idDetalleComanda = abmDetalleComanda.agregarDetalleComanda(comanda, producto, cantidad);
-			
-			request.setAttribute("idDetalleComanda", idDetalleComanda);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+			if (idcomanda == -1 || idproducto == -1 || strCantidad.isEmpty() || cantidad < 1){
+				request.setAttribute("msgError", "Debe seleccionar una comanda y un producto, e indicar la cantidad que desea.");
+				request.getRequestDispatcher("/mesas/creardetallecomanda.jsp").forward(request, response);
+			}
+			else {
+				
+				Comanda comanda = abmComanda.traerComandaYDetalleComandasPorId(idcomanda);
+				Producto producto = abmProducto.traerProductoPorId(idproducto);
+				int idDetalleComanda = abmDetalleComanda.agregarDetalleComanda(comanda, producto, cantidad);
+
+				request.setAttribute("msgTodoBien", "Creacion exitosa de detalle comanda con producto: " + producto.getNombre());
+				request.getRequestDispatcher("/mesas/creardetallecomanda.jsp").forward(request, response);
+			}
+
+			/*
+			 			 if (nombreProducto.isEmpty()){
+				request.setAttribute("msgError", "El nombre del producto no puede quedar en blanco");
+				request.getRequestDispatcher("/productos/cargarbebida.jsp").forward(request, response);
+			}
+			 else{
+					int idProducto = abmProducto.agregarBebida(nombreProducto, descripcionProducto, "", notasBebida);
+					request.setAttribute("msgTodoBien", "Creacion exitosa de bebida con nombre " + nombreProducto);
+					request.getRequestDispatcher("/productos/cargarbebida.jsp").forward(request, response);
+			 }
+			 */
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");
 		}

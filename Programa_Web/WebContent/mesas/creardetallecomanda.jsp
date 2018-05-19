@@ -88,6 +88,22 @@
 		</div>
 	</div>
 	
+	<p class="error">
+			<%String strMensajeError = (String)request.getAttribute("msgError"); 
+			if (strMensajeError == null)
+				strMensajeError = ""; //Si no se hace esto aca, se mostraria el texto 'null' siempre que no haya un msg de error
+			%>
+			<%=strMensajeError%>
+	 </p>
+	 
+	 <p class="todobien">
+	 		<%String strMensajeTodoBien = (String)request.getAttribute("msgTodoBien"); 
+			if (strMensajeTodoBien == null)
+				strMensajeTodoBien = ""; 
+			%>
+			<%=strMensajeTodoBien%>
+	 </p>
+	
 	<h5>1.- Selección de comanda</h5>
 	
 	<div class="contenedortabla">
@@ -183,7 +199,7 @@
 		
 		<div class="mdl-textfield mdl-js-textfield">
 			<input class="mdl-textfield__input" type="text"
-				pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="cantidad">
+				pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="cantidad" value="1">
 			<label class="mdl-textfield__label" for="sample2">Cantidad...</label> <span class="mdl-textfield__error">Lo
 				ingresado no es un número!</span>
 		</div>

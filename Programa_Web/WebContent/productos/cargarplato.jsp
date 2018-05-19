@@ -62,5 +62,22 @@
             </form>
          </div>
       </div>
+      
+      <p class="error">
+			<%String strMensajeError = (String)request.getAttribute("msgError"); 
+			if (strMensajeError == null)
+				strMensajeError = ""; //Si no se hace esto aca, se mostraria el texto 'null' siempre que no haya un msg de error
+			%>
+			<%=strMensajeError%>
+	 </p>
+	 
+	 <p class="todobien">
+	 		<%String strMensajeTodoBien = (String)request.getAttribute("msgTodoBien"); 
+			if (strMensajeTodoBien == null)
+				strMensajeTodoBien = ""; 
+			%>
+			<%=strMensajeTodoBien%>
+	 </p>
+		
    </body>
 </html>

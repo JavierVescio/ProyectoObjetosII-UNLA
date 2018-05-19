@@ -88,7 +88,7 @@ public class ComandaDao {
 		return objeto;
 	}
 	
-	//Traer en una lista todos los Comanda que hayan.
+	//Esta funcion se llama desde crearDetalleComandas  ..
 	@SuppressWarnings("unchecked")
 	public List<Comanda> traerComandas() throws HibernateException {
 		List<Comanda> lista=null;
@@ -115,6 +115,7 @@ public class ComandaDao {
 		return lista;
 	}
 	
+	//Funcion que se llama para traerComandas desde generarTicket
 	@SuppressWarnings("unchecked")
 	public List<Comanda> traerComandasAptasParaGenerarTicket() throws HibernateException {
 		List<Comanda> lista=null;
@@ -122,7 +123,8 @@ public class ComandaDao {
 
 		try {
 			iniciaOperacion();
-			lista = session.createQuery("from Comanda c inner join fetch c.detalleComandas inner join fetch c.ocupacionMesa o inner join fetch o.cliente inner join fetch o.camarero inner join fetch o.mesa order by c.idComanda asc").list();
+			//lista = session.createQuery("from Comanda c inner join fetch c.detalleComandas inner join fetch c.ocupacionMesa o inner join fetch o.cliente inner join fetch o.camarero inner join fetch o.mesa order by c.idComanda asc").list();
+			lista = session.createQuery("from Comanda c inner join fetch c.ocupacionMesa o inner join fetch o.cliente inner join fetch o.camarero inner join fetch o.mesa order by c.idComanda asc").list();
 			
 			listaTicket = session.createQuery("from Ticket t inner join fetch t.comanda").list();
 			

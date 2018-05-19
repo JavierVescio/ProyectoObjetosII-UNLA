@@ -90,6 +90,21 @@
 		</div>
 	</div>
 
+	<p class="error">
+			<%String strMensajeError = (String)request.getAttribute("msgError"); 
+			if (strMensajeError == null)
+				strMensajeError = ""; //Si no se hace esto aca, se mostraria el texto 'null' siempre que no haya un msg de error
+			%>
+			<%=strMensajeError%>
+	 </p>
+	 
+	 <p class="todobien">
+	 		<%String strMensajeTodoBien = (String)request.getAttribute("msgTodoBien"); 
+			if (strMensajeTodoBien == null)
+				strMensajeTodoBien = ""; 
+			%>
+			<%=strMensajeTodoBien%>
+	 </p>
 
 	<h5>1.- Selección de cliente</h5>
 
@@ -194,20 +209,27 @@
 	</script>
 
 	<form action="/Programa_Web/ocuparmesa" method="post" onsubmit="return validateForm()">
-		<input type="hidden" id="hiddenIdCliente" name="idcliente" > 
-		<input type="hidden" id="hiddenIdCamarero" name="idcamarero" >
+		<input type="hidden" id="hiddenIdCliente" name="idcliente" value="-1" > 
+		<input type="hidden" id="hiddenIdCamarero" name="idcamarero" value="-1" >
 		
 		<h5>3.- Selección de mesa</h5>
 		<select name="idmesa" >
 			<%
 				MesaABM abmMesa = new MesaABM();
 				List<Mesa> listaMesas = abmMesa.traerMesas();
+				int contarMesasLibres = 0;
 				for (Mesa mesa : listaMesas) {
+					
 					if (mesa.getEstado() == 0) {
+						contarMesasLibres += 1;
 					%>
 						<option value="<%=mesa.getIdMesa()%>"><%="Nº "+mesa.getNroMesa()%></option>
 					<%
-				}}
+					}
+				}
+				if (contarMesasLibres == 0){
+					%><option value="-1">No hay mesa libre disponible</option><%
+				}
 			%>
 		</select>	
 		<br>

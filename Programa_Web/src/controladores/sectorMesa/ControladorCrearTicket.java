@@ -43,18 +43,23 @@ public class ControladorCrearTicket extends HttpServlet {
 			TicketABM abmTicket = new TicketABM();
 			ComandaABM abmComanda = new ComandaABM();
 			PersonaABM abmPersona = new PersonaABM();
-			
+
 			int idpersonal = Integer.valueOf(request.getParameter("idpersonal").toString());
 			int idcomanda = Integer.valueOf(request.getParameter("idcomanda").toString());
-			
-			Comanda comanda = abmComanda.traerComandaYDetalleComandasPorId(idcomanda);
-			Personal personal = (Personal)abmPersona.traerPersonaPorId(idpersonal);
-			
-			int idTicket = abmTicket.agregarTicket(comanda, personal);
-			
-			
-			request.setAttribute("idTicket", idTicket);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+
+			if (idpersonal == -1 || idcomanda == -1) {
+				request.setAttribute("msgError", "Debe seleccionar un cajero y una comanda.");
+				request.getRequestDispatcher("/mesas/generarticket.jsp").forward(request, response);
+			}
+			else {
+				Comanda comanda = abmComanda.traerComandaYDetalleComandasPorId(idcomanda);
+				Personal personal = (Personal)abmPersona.traerPersonaPorId(idpersonal);
+
+				int idTicket = abmTicket.agregarTicket(comanda, personal);
+
+				request.setAttribute("msgTodoBien", "Creación de ticket exitosa. Ticket Nº: " + String.valueOf(idTicket));
+				request.getRequestDispatcher("/mesas/generarticket.jsp").forward(request, response);
+			}
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");
 		}

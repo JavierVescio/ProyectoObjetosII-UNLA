@@ -38,24 +38,35 @@ public class ControladorOcuparMesa extends HttpServlet {
 		try {
 			MesaABM abmMesa = new MesaABM();
 			PersonaABM abmPersona = new PersonaABM();
-			
+
 			int idcamarero = Integer.valueOf(request.getParameter("idcamarero").toString());
 			int idcliente = Integer.valueOf(request.getParameter("idcliente").toString());
 			int idmesa = Integer.valueOf(request.getParameter("idmesa").toString());
-			int cantidadcomensales = Integer.valueOf(request.getParameter("cantidadcomensales").toString());
+			int cantidadcomensales = 0;
 			
-			Personal camarero = (Personal)abmPersona.traerPersonaPorId(idcamarero);
-			Mesa mesa = abmMesa.traerMesaPorId(idmesa);
-			Cliente cliente = (Cliente)abmPersona.traerPersonaPorId(idcliente);
-			String habitacion = "";
+			String strCantidadComensales = request.getParameter("cantidadcomensales").toString();
+			if (strCantidadComensales.isEmpty() == false){
+				cantidadcomensales = Integer.valueOf(strCantidadComensales);	
+			}
 			
-			int idOcupacionMesa = abmMesa.agregarOcupacionMesa(cliente, camarero, mesa, cantidadcomensales, habitacion);
-			
-			
-			request.setAttribute("idOcupacionMesa", idOcupacionMesa);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+			if (idcamarero == -1 || idcliente == -1 || idmesa == -1 || strCantidadComensales.isEmpty() || cantidadcomensales < 1 ) {
+				request.setAttribute("msgError", "Debe seleccionar un camarero, cliente, mesa y al menos debe haber un comensal.");
+				request.getRequestDispatcher("/mesas/ocuparmesa.jsp").forward(request, response);
+			}
+			else {
+				Personal camarero = (Personal)abmPersona.traerPersonaPorId(idcamarero);
+				Mesa mesa = abmMesa.traerMesaPorId(idmesa);
+				Cliente cliente = (Cliente)abmPersona.traerPersonaPorId(idcliente);
+				String habitacion = "";
+
+				int idOcupacionMesa = abmMesa.agregarOcupacionMesa(cliente, camarero, mesa, cantidadcomensales, habitacion);
+
+				request.setAttribute("msgTodoBien", "Ocupación de mesa exitosa en mesa Nº: " + String.valueOf(mesa.getNroMesa()));
+				request.getRequestDispatcher("/mesas/ocuparmesa.jsp").forward(request, response);
+
+			}
 		} catch (Exception e) {
-			response.sendError(500, "Error Intente de nuevo");
+			response.sendError(500, "Error Intente de nuevo otra vez");
 		}
 	}
 

@@ -87,6 +87,23 @@
 			<h3>Generar Ticket</h3>
 		</div>
 	</div>
+	
+		<p class="error">
+			<%String strMensajeError = (String)request.getAttribute("msgError"); 
+			if (strMensajeError == null)
+				strMensajeError = ""; //Si no se hace esto aca, se mostraria el texto 'null' siempre que no haya un msg de error
+			%>
+			<%=strMensajeError%>
+	 </p>
+	 
+	 <p class="todobien">
+	 		<%String strMensajeTodoBien = (String)request.getAttribute("msgTodoBien"); 
+			if (strMensajeTodoBien == null)
+				strMensajeTodoBien = ""; 
+			%>
+			<%=strMensajeTodoBien%>
+	 </p>
+	
       
       <h5>1.- Selección de comanda</h5>
 	
@@ -173,8 +190,8 @@
   
 
             <form action="/Programa_Web/generarticket" method="post">
-            	<input type="hidden" id="hiddenIdComanda" name="idcomanda"> 
-				<input type="hidden" id="hiddenIdPersonal" name="idpersonal"> 
+            	<input type="hidden" id="hiddenIdComanda" name="idcomanda" value = "-1"> 
+				<input type="hidden" id="hiddenIdPersonal" name="idpersonal" value = "-1"> 
                
                <br>
                <!-- Accent-colored raised button with ripple -->

@@ -34,6 +34,14 @@ header.subtitulo {
 	margin: auto;
 }
 
+p.error {
+	color: #e8491d;
+}
+
+p.todobien {
+	color: #0000FF;
+}
+
 #contenido-login{
 	text-align: center;
 	display:block;
