@@ -73,6 +73,9 @@ public class PersonaABM {
 		return lista;
 	}
 	
+	public int traerPersonalConCantidadDeMesasAsignadas(int idPersonal){
+		return dao.traerPersonalConCantidadDeMesasAsignadas(idPersonal);
+	}
 	
 	
 /* --- */

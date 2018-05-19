@@ -67,8 +67,9 @@
 	    	    var data = tableD.row(this).data();
 	    	    document.getElementById("lblCamareroSeleccionado").value = "Camarero seleccionado: " + data[1] + ", " + data[2];
 	    	    document.getElementById("hiddenIdCamarero").value = data[0];
+	    	    
 	    } );
-
+	    
 	} );
 	
 </script>
@@ -101,7 +102,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%
+				<%try{
 					PersonaABM abmPersona = new PersonaABM();
 					List<Cliente> lista = abmPersona.traerClientes();
 					for (Cliente cliente : lista) {
@@ -113,6 +114,10 @@
 				</tr>
 				<%
 					}
+				}
+				catch(Exception e){
+					
+				}
 				%>
 			</tbody>
 		</table>
@@ -128,21 +133,30 @@
 					<th>ID</th>
 					<th>Apellido</th>
 					<th>Nombre</th>
-					<th>DNI</th>
+					<th>DNI</th> 
+					<th>Cant. Mesas Asignadas</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
+				try{
+					PersonaABM abmPersona = new PersonaABM();
 					List<Personal> listaPersonal = abmPersona.traerCamareros();
 					for (Personal personal : listaPersonal) {
+						int cantidad = abmPersona.traerPersonalConCantidadDeMesasAsignadas(personal.getIdPersona());
 				%><tr>
 					<td><%=personal.getIdPersona()%></td>
 					<td><%=personal.getApellido()%></td>
 					<td><%=personal.getNombre()%></td>
 					<td><%=personal.getDni()%></td>
+					<td><%=abmPersona.traerPersonalConCantidadDeMesasAsignadas(personal.getIdPersona())%></td>
 				</tr>
 				<%
 					}
+				}
+				catch(Exception e){
+					
+				}
 				%>
 			</tbody>
 		</table>
@@ -160,14 +174,29 @@
 	</div>
 	<br>
 
-	<form action="/Programa_Web/ocuparmesa" method="post">
-		<input type="hidden" id="hiddenIdCliente" name="idcliente"> 
-		<input type="hidden" id="hiddenIdCamarero" name="idcamarero"> 
-		<!-- <input type="hidden" id="hiddenIdMesa" name="idmesa">
-		<input type="hidden" id="hiddenIdCantidadComensales" name="cantidadcomensales">-->
+	<script type="text/javascript">
+		function validateForm() {
+			
+			var salida = false;
+			if (document.getElementById("hiddenIdCliente").value == "")
+				salida = false;
+			if (document.getElementById("hiddenIdCamarero").value == "")
+				salida = false;
+			if (document.getElementById("idmesa").value == "")
+				salida = false;
+			if (document.getElementById("cantidadcomensales").value == "")
+				salida = false;
+			
+			return salida; //Por las que devuelva falseo, se tira error http nº 500
+		}
+	</script>
+
+	<form action="/Programa_Web/ocuparmesa" method="post" onsubmit="return validateForm()">
+		<input type="hidden" id="hiddenIdCliente" name="idcliente" > 
+		<input type="hidden" id="hiddenIdCamarero" name="idcamarero" >
 		
 		<h5>3.- Selección de mesa</h5>
-		<select name="idmesa">
+		<select name="idmesa" >
 			<%
 				MesaABM abmMesa = new MesaABM();
 				List<Mesa> listaMesas = abmMesa.traerMesas();
@@ -182,7 +211,7 @@
 		<br>
 		<h5>4.- Cantidad de comensales</h5>
 		<div class="mdl-textfield mdl-js-textfield">
-			<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="cantidadcomensales">
+			<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="txtCantidadComensales" name="cantidadcomensales">
 			<label class="mdl-textfield__label" for="sample2">Cantidad de comensales...</label>
 			<span class="mdl-textfield__error">Lo ingresado no es un número!</span>
 		</div>
@@ -190,7 +219,7 @@
 		<br>
 
 		<!-- Accent-colored raised button with ripple -->
-		<button
+		<button id="btnRegistrarOcupacion"
 			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
 			Registrar ocupación de mesa</button>
 	</form>

@@ -102,7 +102,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%
+				<%try{
 					ComandaABM abmComanda = new ComandaABM();
 					List<Comanda> listaComanda = abmComanda.traerComandas();
 					for (Comanda comanda : listaComanda) {
@@ -123,6 +123,10 @@
 				</tr>
 				<%
 					}
+				}
+				catch(Exception e){
+					
+				}
 				%>
 			</tbody>
 		</table>
@@ -137,20 +141,33 @@
 					<th>ID</th>
 					<th>Nombre</th>
 					<th>Descripcion</th>
+					<th>Nota</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
+				try{
 					ProductoABM abmProducto = new ProductoABM();
 					List<Producto> listaProducto = abmProducto.traerProductos();
 					for (Producto producto : listaProducto) {
+						String infoPlatoBebida = "";
+						if (producto instanceof Plato){
+							infoPlatoBebida = "Plato " + ((Plato)producto).getNotas();
+						}else{
+							infoPlatoBebida = "Bebida " + ((Bebida)producto).getNotas();
+						}
 				%><tr>
 					<td><%=producto.getIdProducto()%></td>
 					<td><%=producto.getNombre()%></td>
 					<td><%=producto.getDescripcion()%></td>
+					<td><%=infoPlatoBebida%></td>
 				</tr>
 				<%
 					}
+				}
+				catch(Exception e){
+					
+				}
 				%>
 			</tbody>
 		</table>
@@ -160,10 +177,12 @@
 		<input id="hiddenIdComanda" type="hidden" name="idcomanda" value="-1">
 		<input id="hiddenIdProducto" type="hidden" name="idproducto" value="-1">
 		
+		<h5>3.- Cantidad pedida</h5>
+		
 		<div class="mdl-textfield mdl-js-textfield">
 			<input class="mdl-textfield__input" type="text"
 				pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" name="cantidad">
-			<label class="mdl-textfield__label" for="sample2">Cantidad pedida...</label> <span class="mdl-textfield__error">Lo
+			<label class="mdl-textfield__label" for="sample2">Cantidad...</label> <span class="mdl-textfield__error">Lo
 				ingresado no es un número!</span>
 		</div>
 

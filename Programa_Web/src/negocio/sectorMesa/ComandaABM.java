@@ -81,8 +81,10 @@ public class ComandaABM {
 	
 	public Comanda traerComandaYDetalleComandasPorId(int idComanda) throws Exception {
 		Comanda comanda = daoComanda.traerComandaYDetalleComandasPorId(idComanda);
-		if (comanda == null)
+		if (comanda == null){
+			System.out.println("comanda nulaaaaaa");
 			throw new Exception("comanda nula");
+		}
 		return comanda;
 	}
 	
@@ -92,6 +94,15 @@ public class ComandaABM {
 			throw new Exception("No se obtuvo resultados");
 		return listaComanda;
 	}
+	
+	public List<Comanda> traerComandasAptasParaGenerarTicket() throws Exception {
+		List<Comanda> listaComanda = daoComanda.traerComandasAptasParaGenerarTicket();
+		if (listaComanda.isEmpty())
+			throw new Exception("No se obtuvo resultados");
+		return listaComanda;
+	}
+	
+	
 	
 	
 	private PrecioProducto calcularPrecio(Comanda comanda, Producto producto) throws Exception {

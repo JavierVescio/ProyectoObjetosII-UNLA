@@ -1,6 +1,7 @@
 package negocio.sectorMesa;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Set;
 
 import dao.sectorMesa.ComandaDao;
@@ -59,4 +60,11 @@ public class TicketABM {
 		return ticket;
 	}
 
+	public List<Ticket> traerTickets() throws Exception {
+		List<Ticket> listaTicket = daoTicket.traerTickets();
+		System.out.println("cantidad: " + listaTicket.size());
+		if (listaTicket.isEmpty())
+			throw new Exception("No se obtuvo resultados");
+		return listaTicket;
+	}
 }

@@ -57,9 +57,7 @@ public class ControladorCrearDetalleComanda extends HttpServlet {
 			
 			Comanda comanda = abmComanda.traerComandaYDetalleComandasPorId(idcomanda);
 			Producto producto = abmProducto.traerProductoPorId(idproducto);
-			
 			int idDetalleComanda = abmDetalleComanda.agregarDetalleComanda(comanda, producto, cantidad);
-			
 			
 			request.setAttribute("idDetalleComanda", idDetalleComanda);
 			request.getRequestDispatcher("/administracion.jsp").forward(request, response);

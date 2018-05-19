@@ -103,8 +103,9 @@
 			</thead>
 			<tbody>
 				<%
+				try{
 					ComandaABM abmComanda = new ComandaABM();
-					List<Comanda> listaComanda = abmComanda.traerComandas();
+					List<Comanda> listaComanda = abmComanda.traerComandasAptasParaGenerarTicket();
 					for (Comanda comanda : listaComanda) {
 						OcupacionMesa ocupacionMesa = comanda.getOcupacionMesa();
 						Cliente cliente = ocupacionMesa.getCliente();
@@ -123,6 +124,10 @@
 				</tr>
 				<%
 					}
+				}
+				catch(Exception e){
+					
+				}
 				%>
 			</tbody>
 		</table>
@@ -143,7 +148,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%
+				<%try{
 					PersonaABM abmPersona = new PersonaABM();
 					List<Personal> listaPersonal = abmPersona.traerCamareros();
 					for (Personal personal : listaPersonal) {
@@ -155,6 +160,10 @@
 				</tr>
 				<%
 					}
+				}
+				catch(Exception e){
+					
+				}
 				%>
 			</tbody>
 		</table>

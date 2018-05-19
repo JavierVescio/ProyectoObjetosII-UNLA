@@ -96,6 +96,7 @@
 			</thead>
 			<tbody>
 				<%
+				try{
 					MesaABM abmMesa = new MesaABM();
 					List<OcupacionMesa> listaOcupacionMesa = abmMesa.traerOcupacionMesas();
 					for (OcupacionMesa ocupacionMesa : listaOcupacionMesa) {
@@ -113,6 +114,10 @@
 				</tr>
 				<%
 					}
+				}
+				catch(Exception e){
+					
+				}
 				%>
 			</tbody>
 		</table>

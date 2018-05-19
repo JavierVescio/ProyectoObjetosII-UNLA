@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import dao.HibernateUtil;
+import datos.sectorMesa.OcupacionMesa;
 import datos.sectorPersonal.*;
 import datos.sectorProducto.Producto;
 
@@ -135,7 +136,6 @@ public class PersonaDao {
 	public List<Personal> traerCamareros() throws HibernateException {
 		List<Personal> lista=null;
 		
-		
 		try {
 			iniciaOperacion();
 			lista = session.createQuery("from Personal where idTipoPersonal = 1").list();
@@ -143,6 +143,29 @@ public class PersonaDao {
 			session.close();
 		}
 		return lista;
+	}
+	
+	@SuppressWarnings("unchecked") ///NO FUNCIONA!!!!!!!
+	public int traerPersonalConCantidadDeMesasAsignadas(int idPersonal) throws HibernateException {
+		int cantidadMesas = 0;
+		List<OcupacionMesa> lista=null;
+		
+		System.out.println("idPersonal recibido es: " + idPersonal);
+		
+		try {
+			iniciaOperacion();
+			lista = session.createQuery("FROM OcupacionMesa o INNER JOIN FETCH o.camarero WHERE fechaHoraFin is null").list();
+			
+			for (OcupacionMesa ocupacion: lista){
+				System.out.println("ocupacion.getCamarero().getIdPersona(): " + ocupacion.getCamarero().getIdPersona());
+				if (ocupacion.getCamarero().getIdPersona() == idPersonal)
+					cantidadMesas = cantidadMesas + 1;
+			}
+			
+		}finally{
+			session.close();
+		}
+		return cantidadMesas;
 	}
 	
 	

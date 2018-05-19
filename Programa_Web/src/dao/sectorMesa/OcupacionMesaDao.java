@@ -97,10 +97,21 @@ public class OcupacionMesaDao {
 	@SuppressWarnings("unchecked")
 	public List<OcupacionMesa> traerOcupacionMesas() throws HibernateException {
 		List<OcupacionMesa> lista=null;
+		List<Comanda> listaComanda=null;
 
 		try {
 			iniciaOperacion();
 			lista = session.createQuery("from OcupacionMesa om inner join fetch om.cliente c inner join fetch om.mesa m inner join fetch om.camarero p").list();
+			listaComanda = session.createQuery("from Comanda c inner join fetch c.ocupacionMesa").list();
+			
+			for (Comanda comanda:listaComanda){
+				for(int x=lista.size()-1;x>=0;x--){
+					if (comanda.getOcupacionMesa().equals(lista.get(x))){
+						lista.remove(x);
+					}
+				}
+			}
+			
 		}finally {
 			session.close();
 		}
