@@ -72,22 +72,37 @@ $(document).ready( function () {
 			<thead>
 				<tr>
 					<th>ID Producto</th>
+					<th>Tipo</th>
 					<th>Nombre</th>
 					<th>Descripcion</th>
+					<th>Nota</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%
+				<%try{
 					ProductoABM abmProducto = new ProductoABM();
 					List<Producto> lista = abmProducto.traerProductos();
 					for (Producto producto : lista) {
+						String tipo = "Plato";
+						String nota = "";
+						if (producto instanceof Bebida){
+							tipo = "Bebida";
+							nota = ((Bebida)producto).getNotas();
+						}else {
+							nota = ((Plato)producto).getNotas();
+						}
 				%><tr>
 					<td><%=producto.getIdProducto()%></td>
+					<td><%=tipo%>
 					<td><%=producto.getNombre()%></td>
 					<td><%=producto.getDescripcion()%></td>
+					<td><%=nota%>
 				</tr>
 				<%
 					}
+				}catch(Exception e){
+					
+				}
 				%>
 			</tbody>
 		</table>

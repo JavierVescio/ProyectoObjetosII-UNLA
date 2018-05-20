@@ -49,6 +49,12 @@ public class ControladorOcuparMesa extends HttpServlet {
 				cantidadcomensales = Integer.valueOf(strCantidadComensales);	
 			}
 			
+			System.out.println("OCUPAR MESA");
+			System.out.println("idcamarero: " + idcamarero);
+			System.out.println("idcliente: " + idcliente);
+			System.out.println("idmesa: " + idmesa);
+			System.out.println("cantidadcomensales: " + cantidadcomensales);
+			
 			if (idcamarero == -1 || idcliente == -1 || idmesa == -1 || strCantidadComensales.isEmpty() || cantidadcomensales < 1 ) {
 				request.setAttribute("msgError", "Debe seleccionar un camarero, cliente, mesa y al menos debe haber un comensal.");
 				request.getRequestDispatcher("/mesas/ocuparmesa.jsp").forward(request, response);
@@ -66,7 +72,7 @@ public class ControladorOcuparMesa extends HttpServlet {
 
 			}
 		} catch (Exception e) {
-			response.sendError(500, "Error Intente de nuevo otra vez");
+			response.sendError(500, "ControladorOcuparMesa: "+e.getMessage());
 		}
 	}
 

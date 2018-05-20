@@ -47,8 +47,8 @@ public class ControladorCrearComanda extends HttpServlet {
 			int idComanda = abmComanda.agregarComanda(ocupacionMesa);
 			
 			
-			request.setAttribute("idComanda", idComanda);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+			request.setAttribute("msgTodoBien", "Creacion exitosa de comanda con id: " + String.valueOf(idComanda));
+			request.getRequestDispatcher("/mesas/creardetallecomanda.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");
 		}

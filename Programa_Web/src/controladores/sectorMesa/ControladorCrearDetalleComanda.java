@@ -64,7 +64,6 @@ public class ControladorCrearDetalleComanda extends HttpServlet {
 				request.getRequestDispatcher("/mesas/creardetallecomanda.jsp").forward(request, response);
 			}
 			else {
-				
 				Comanda comanda = abmComanda.traerComandaYDetalleComandasPorId(idcomanda);
 				Producto producto = abmProducto.traerProductoPorId(idproducto);
 				int idDetalleComanda = abmDetalleComanda.agregarDetalleComanda(comanda, producto, cantidad);
@@ -72,20 +71,9 @@ public class ControladorCrearDetalleComanda extends HttpServlet {
 				request.setAttribute("msgTodoBien", "Creacion exitosa de detalle comanda con producto: " + producto.getNombre());
 				request.getRequestDispatcher("/mesas/creardetallecomanda.jsp").forward(request, response);
 			}
-
-			/*
-			 			 if (nombreProducto.isEmpty()){
-				request.setAttribute("msgError", "El nombre del producto no puede quedar en blanco");
-				request.getRequestDispatcher("/productos/cargarbebida.jsp").forward(request, response);
-			}
-			 else{
-					int idProducto = abmProducto.agregarBebida(nombreProducto, descripcionProducto, "", notasBebida);
-					request.setAttribute("msgTodoBien", "Creacion exitosa de bebida con nombre " + nombreProducto);
-					request.getRequestDispatcher("/productos/cargarbebida.jsp").forward(request, response);
-			 }
-			 */
+			
 		} catch (Exception e) {
-			response.sendError(500, "Error Intente de nuevo");
+			response.sendError(500, "ControladorCrearDetalleComanda: "+e.getMessage());
 		}
 	}
 
