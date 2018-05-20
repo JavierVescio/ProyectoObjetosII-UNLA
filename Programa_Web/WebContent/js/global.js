@@ -1,68 +1,147 @@
+$(document)
+		.ready(
+				function() {
 
-$(document).ready(function() {
-	
-	$('#btn-ingresar').click(function() {
+//					$('#consultar').click(function() {
+//						var dni = $('#dni').val();
+//						var loginData = {
+//								'user' : $('input[name=usuario]',
+//										this).val(),
+//								'pass' : $('input[name=password]',
+//										this).val(),
+//							};
+//						$.ajax({
+//							method : "POST",
+//							url : "ControladorLogIn",
+//							data : loginData,
+//							async : false
+//						}).done(function(data) {
+//							$("#responsecliente").html(data);
+//						})
+//					});
 
-		var usuario = $('#usuario').val();
-		var password = $('#password').val();
-		if (usuario==''||password=='') {
-			mensajeError = "Por favor complete los campos";
-			$(".mensaje-error").html(mensajeError).slideDown('normal').delay(3000).slideUp('normal');
-	
-		} else {
-			$.ajax({
-				method : "POST",
-				url : "login",
-				data : {
-					usuario : usuario,
-					password : password
-				},
-				async : false
-			}).success(function(data) {
-				$("#loginarea").empty();
-				$("#contenido").html(data);
-				/*window.location.replace("/Programa_Web/administracion.jsp");*/
-		
-			})
-			.fail(function(jqXHR,textStatus,errorThrown) {
-				mensajeError = "Usuario o Contrasenia Incorrecta";
-				$(".mensaje-error").html(mensajeError).slideDown('normal').delay(3000).slideUp('normal');
-		
-			})
-	}
+					// ******************************************************************************
+					// â–º Func : Cambia dinamicamente la url al hacer click en
+					// los distintos tabs
+					// â–º Obser:
+					// â–º ToDo : Determinar que hacer si el navegador no
+					// soporta HTML5
+					// ******************************************************************************
+					// $(".mdl-layout__tab").click(function() {
+					// tab = $(this).attr("id");
+					// var obj = { Page: 'Gestion Campus', Url: tab };
+					// history.pushState(obj, obj.Page, obj.Url);
+					// });
 
-	});
-	$('#agregarPlato').click(function() {
+					// *******************************************************************************
+					// â–º Func : Despliega el dialogo de login normal
+					// â–º Obser:
+					// â–º ToDo :
+					// ******************************************************************************
 
-		var nombre = $('#nombre').val();
-		var descripcion  = $('#descripcion').val();
-		var nota  = $('#nota').val();
-		if (nombre=='') {
-			mensajeError = "Por favor complete los campos";
-			$(".mensaje-error").html(mensajeError).slideDown('normal').delay(3000).slideUp('normal');
-	
-		} else {
-			$.ajax({
-				method : "POST",
-				url : "login",
-				data : {
-					usuario : usuario,
-					password : password
-				},
-				async : false
-			}).success(function(data) {
-				$("#loginarea").empty();
-				$("#contenido").html(data);
-				/*window.location.replace("/Programa_Web/administracion.jsp");*/
-		
-			})
-			.fail(function(jqXHR,textStatus,errorThrown) {
-				mensajeError = "Usuario o Contrasenia Incorrecta";
-				$(".mensaje-error").html(mensajeError).slideDown('normal').delay(3000).slideUp('normal');
-		
-			})
-	}
+					// *******************************************************************************
+					// â–º Func : Despliega el dialogo de login forzado si el
+					// usuario intenta enviar
+					// un formulario sin estar loggedo
+					// â–º Obser:
+					// â–º ToDo :
+					// ********************************************************************************
 
-	});
+					// *******************************************************************************
+					// â–º Func : Desvanece el modal y los formularios de login
+					// al hacer click en
+					// cualquier parte
+					// â–º Obser:
+					// â–º ToDo :
+					// ********************************************************************************
 
-});
+					// *******************************************************************************
+					// â–º Func : Agrega la funcion de submit a los formularios
+					// de login
+					// â–º Obser:
+					// â–º ToDo :
+//					// ********************************************************************************
+//					$('#loginarea')
+//							.on(
+//									'submit',
+//									'.js-login',
+//									function(event) {
+//										event.preventDefault();
+//										var loginData = {
+//											'user' : $('input[name=usuario]',
+//													this).val(),
+//											'pass' : $('input[name=password]',
+//													this).val(),
+//										};
+//										$
+//												.ajax(
+//														{
+//															type : 'POST', // define
+//															// the
+//															// type
+//															// of
+//															// HTTP
+//															// verb
+//															// we
+//															// want
+//															// to
+//															// use
+//															// (POST
+//															// for
+//															// our
+//															// form)
+//															url : '/Gestion/Login/log_in', // the
+//															// url
+//															// where
+//															// we
+//															// want
+//															// to
+//															// POST
+//															data : loginData, // our
+//														// data
+//														// object
+//														})
+//												.done(
+//														function(data) {
+//															if (data != 0) {
+//																$(
+//																		'.mdl-layout__header-row')
+//																		.find(
+//																				"#login-button")
+//																		.remove();
+//																$("#login-area")
+//																		.append(
+//																				stringToMDL(data));
+//																$("#modal")
+//																		.trigger(
+//																				"click");
+//															} else {
+//																mensajeError = "Error, intente nuevamente";
+//																$(
+//																		".mensaje-error")
+//																		.html(
+//																				mensajeError)
+//																		.slideDown(
+//																				'normal')
+//																		.delay(
+//																				3000)
+//																		.slideUp(
+//																				'normal');
+//															}
+//														});
+//									});
+
+					// *******************************************************************************
+					// â–º Func : transforma un string html en DOM con los
+					// eventos MDL asociados
+					// â–º Obser:
+					// â–º ToDo :
+					// ********************************************************************************
+					// window.stringToMDL = function(str){
+					// var html = $.parseHTML(str);
+					// $('*', $(html)).each(function () {
+					// componentHandler.upgradeElement(this);
+					// });
+					// return html;
+					// };
+				});

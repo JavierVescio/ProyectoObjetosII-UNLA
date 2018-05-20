@@ -85,7 +85,16 @@ public class TicketDao {
 		Ticket objeto = null ;
 		try {
 			iniciaOperacion();
-			objeto = (Ticket)session.createQuery("from Ticket t inner join fetch t.personal p inner join fetch t.comanda where t.idTicket='"+idTicket+"'").uniqueResult();
+			objeto = (Ticket)session.createQuery("from Ticket t "
+					+ "inner join fetch t.personal p "
+					+ "inner join fetch t.comanda comanda "
+					+ "inner join fetch comanda.ocupacionMesa ocupacionMesa "
+					+ "inner join fetch ocupacionMesa.cliente cliente "
+					+ "inner join fetch ocupacionMesa.camarero camarero "
+					+ "inner join fetch ocupacionMesa.mesa mesa "
+					+ "inner join fetch comanda.detalleComandas detalleComandas "
+					+ "inner join fetch detalleComandas.producto producto "
+					+ "where t.idTicket='"+idTicket+"'").uniqueResult();
 		} finally {
 			session.close();
 		}
@@ -99,7 +108,14 @@ public class TicketDao {
 
 		try {
 			iniciaOperacion();
-			lista = session.createQuery("from Ticket").list();
+			
+			lista = session.createQuery("from Ticket t "
+					+ "inner join fetch t.personal personal "
+					+ "inner join fetch t.comanda comanda "
+					+ "inner join fetch comanda.ocupacionMesa ocupacionMesa "
+					+ "inner join fetch ocupacionMesa.cliente cliente "
+					+ "inner join fetch ocupacionMesa.camarero camarero "
+					+ "inner join fetch ocupacionMesa.mesa mesa").list();
 		}finally {
 			session.close();
 		}

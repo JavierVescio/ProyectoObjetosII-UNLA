@@ -43,20 +43,38 @@ public class ControladorCrearTicket extends HttpServlet {
 			TicketABM abmTicket = new TicketABM();
 			ComandaABM abmComanda = new ComandaABM();
 			PersonaABM abmPersona = new PersonaABM();
-			
+
 			int idpersonal = Integer.valueOf(request.getParameter("idpersonal").toString());
 			int idcomanda = Integer.valueOf(request.getParameter("idcomanda").toString());
+
+			System.out.println("CREAR TICKET");
+			System.out.println("idcomanda: " + idcomanda);
+			System.out.println("idpersonal: " + idpersonal);
 			
-			Comanda comanda = abmComanda.traerComandaYDetalleComandasPorId(idcomanda);
-			Personal personal = (Personal)abmPersona.traerPersonaPorId(idpersonal);
-			
-			int idTicket = abmTicket.agregarTicket(comanda, personal);
-			
-			
-			request.setAttribute("idTicket", idTicket);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+			if (idpersonal == -1 || idcomanda == -1) {
+				request.setAttribute("msgError", "Debe seleccionar un cajero y una comanda.");
+				request.getRequestDispatcher("/mesas/generarticket.jsp").forward(request, response);
+			}
+			else {
+				Comanda comanda = abmComanda.traerComandaYDetalleComandasPorId(idcomanda);
+				Personal personal = (Personal)abmPersona.traerPersonaPorId(idpersonal);
+				
+				if (comanda.getDetalleComandas().size() <1){
+					request.setAttribute("msgError", "La comanda Nº "+String.valueOf(comanda.getIdComanda())+" aun no tiene detalle de comandas cargados.");
+					request.getRequestDispatcher("/mesas/generarticket.jsp").forward(request, response);
+				}
+				else {
+					int idTicket = abmTicket.agregarTicket(comanda, personal);
+
+					request.setAttribute("msgTodoBien", "Creación de ticket exitosa. Ticket Nº: " + String.valueOf(idTicket));
+					request.getRequestDispatcher("/mesas/generarticket.jsp").forward(request, response);
+				}
+					
+
+
+			}
 		} catch (Exception e) {
-			response.sendError(500, "Error Intente de nuevo");
+			response.sendError(500, "ControladorCrearTicket: "+e.getMessage());
 		}
 	}
 

@@ -43,7 +43,8 @@ public class ControladorVerComanda extends HttpServlet {
 			
 			
 			request.setAttribute("comanda", comanda);
-			request.getRequestDispatcher("/mesas/comanda.jsp").forward(request, response);
+			//request.getRequestDispatcher("/mesas/comanda.jsp").forward(request, response);
+			request.getRequestDispatcher("/mesas/vercomanda.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");
 		}

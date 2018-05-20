@@ -1,0 +1,21 @@
+TABLA			CANTIDAD REGISTROS
+
+Clientes: 		5
+Login:			4
+Mesa:			4
+Persona:		9
+Personal:		3
+TipoCliente:		3
+TipoPersonal:		3
+UnidadMesa:		4
+
+Bebida:			0
+Comandas:		0
+DetalleComandas:	0
+OcupacionMesa:		0
+Plato:			0
+PrecioProducto:		0
+Producto:		0
+Ticket:			0
+
+19/05/2018

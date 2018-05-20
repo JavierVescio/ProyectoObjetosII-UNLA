@@ -34,7 +34,8 @@
       <LINK rel="stylesheet" href="/Programa_Web/global.css" />
    </HEAD>
    <BODY>
-  
+   <%@ include file="/cabecera.jsp"%>
+   
       <div class="mdl-grid card-centered">
       
          <div class="mdl-cell mdl-cell--3-col mdl-card mdl-shadow--2dp">
@@ -111,17 +112,17 @@
                Administracion, Consultas y generacion de tickets
             </div>
             <div class="mdl-card__actions mdl-card--border">
-              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect middle" href="mesas/generarticket.jsp" title="Próximamente">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect middle" href="mesas/generarticket.jsp" title="">
                Generar ticket
                </a>
                <span class="split">
                </span>
-               <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect middle" href="mesas/verticket.jsp" title="Próximamente">
+               <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect middle" href="mesas/verticket.jsp" title="">
                Ver ticket
                </a>
                <!-- <span class="split">
                </span>
-               <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect middle" href="/ConsultarTicket" title="Próximamente">
+               <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect middle" href="/ConsultarTicket" title="">
                Consultar ticket
                </a>
             </div> -->

@@ -46,40 +46,19 @@
 <script type="text/javascript"
 	src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-	    $('#datatable').DataTable( {
-	        "language": {
-	            "sProcessing":     "Procesando...",
-	            "sLengthMenu":     "Mostrar _MENU_ registros",
-	            "sZeroRecords":    "No se encontraron resultados",
-	            "sEmptyTable":     "Ningún dato disponible en esta tabla",
-	            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-	            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-	            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-	            "sInfoPostFix":    "",
-	            "sSearch":         "Buscar:",
-	            "sUrl":            "",
-	            "sInfoThousands":  ",",
-	            "sLoadingRecords": "Cargando...",
-	            "oPaginate": {
-	                "sFirst":    "Primero",
-	                "sLast":     "Último",
-	                "sNext":     "Siguiente",
-	                "sPrevious": "Anterior"
-	            },
-	            "oAria": {
-	                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-	                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-	            }
-	        }
-	    } );
-	});
+
+$(document).ready( function () {
+    $('#datatable').DataTable();
+} );
+	
 </script>
 <!--  -->
 
 </HEAD>
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
+
+<a href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
 
 	<div class="mdl-grid center-items">
 		<div class="mdl-cell mdl-cell--4-col">
@@ -93,22 +72,37 @@
 			<thead>
 				<tr>
 					<th>ID Producto</th>
+					<th>Tipo</th>
 					<th>Nombre</th>
 					<th>Descripcion</th>
+					<th>Nota</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%
+				<%try{
 					ProductoABM abmProducto = new ProductoABM();
 					List<Producto> lista = abmProducto.traerProductos();
 					for (Producto producto : lista) {
+						String tipo = "Plato";
+						String nota = "";
+						if (producto instanceof Bebida){
+							tipo = "Bebida";
+							nota = ((Bebida)producto).getNotas();
+						}else {
+							nota = ((Plato)producto).getNotas();
+						}
 				%><tr>
 					<td><%=producto.getIdProducto()%></td>
+					<td><%=tipo%>
 					<td><%=producto.getNombre()%></td>
 					<td><%=producto.getDescripcion()%></td>
+					<td><%=nota%>
 				</tr>
 				<%
 					}
+				}catch(Exception e){
+					
+				}
 				%>
 			</tbody>
 		</table>

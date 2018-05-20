@@ -90,12 +90,13 @@ public class MesaDao {
 
 		try {
 			iniciaOperacion();
-			lista = session.createQuery("from Mesa").list();
+			lista = session.createQuery("from Mesa order by nroMesa").list();
 		}finally {
 			session.close();
 		}
 		return lista;
 	}
+
 /* --- */
 	
 	

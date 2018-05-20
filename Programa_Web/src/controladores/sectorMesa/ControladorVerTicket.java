@@ -43,7 +43,8 @@ public class ControladorVerTicket extends HttpServlet {
 			
 			
 			request.setAttribute("ticket", ticket);
-			request.getRequestDispatcher("/mesas/ticket.jsp").forward(request, response);
+			//request.getRequestDispatcher("/mesas/ticket.jsp").forward(request, response);
+			request.getRequestDispatcher("/mesas/verticket.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.sendError(500, "Error Intente de nuevo");
 		}

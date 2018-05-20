@@ -35,6 +35,8 @@
    </HEAD>
    <BODY>
       <%@ include file="/cabecera.jsp"%>
+  	
+  	<a href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
   
       <div class="mdl-grid center-items">
          <div class="mdl-cell mdl-cell--4-col">
@@ -52,6 +54,13 @@
                   <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" name="notasPlato"></textarea>
                   <label class="mdl-textfield__label" for="sample5">Nota plato (opcional)</label>
                </div>
+               
+               <div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="text"
+						id="sample2" name="precio" value="">
+				<label class="mdl-textfield__label" for="sample2">Precio...</label>
+				</div>
+               
                <br>
                <!-- Accent-colored raised button with ripple -->
 				<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
@@ -60,5 +69,22 @@
             </form>
          </div>
       </div>
+      
+      <p class="error">
+			<%String strMensajeError = (String)request.getAttribute("msgError"); 
+			if (strMensajeError == null)
+				strMensajeError = ""; //Si no se hace esto aca, se mostraria el texto 'null' siempre que no haya un msg de error
+			%>
+			<%=strMensajeError%>
+	 </p>
+	 
+	 <p class="todobien">
+	 		<%String strMensajeTodoBien = (String)request.getAttribute("msgTodoBien"); 
+			if (strMensajeTodoBien == null)
+				strMensajeTodoBien = ""; 
+			%>
+			<%=strMensajeTodoBien%>
+	 </p>
+		
    </body>
 </html>

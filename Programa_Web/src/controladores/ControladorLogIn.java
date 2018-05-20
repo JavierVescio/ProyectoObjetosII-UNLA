@@ -31,12 +31,21 @@ public class ControladorLogIn extends HttpServlet {
 		try {
 			String user = request.getParameter("usuario");
 			String pass = request.getParameter("password");
-			LogInABM loginabm = new LogInABM();
-			Personal usuario = loginabm.iniciarSesion(user, pass);
-			request.setAttribute("usuario", usuario);
-			request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+
+			if (user.isEmpty() || pass.isEmpty()){
+				request.setAttribute("msgError", "Debe escribir un usuario y contraseña.");
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			else {
+				LogInABM loginabm = new LogInABM();
+				Personal usuario = loginabm.iniciarSesion(user, pass);
+				request.setAttribute("usuario", usuario);
+				request.getRequestDispatcher("/administracion.jsp").forward(request, response);
+			}
 		} catch (Exception e) {
-			response.sendError(500, "Usuario o Contraseña Incorrecta");
+			//response.sendError(500, "Error Intente de nuevo");
+			request.setAttribute("msgError", "Usuario o contraseña incorrecto.");
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 	}
 
