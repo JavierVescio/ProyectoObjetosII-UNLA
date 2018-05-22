@@ -35,7 +35,7 @@
    </HEAD>
    <BODY>
       <%@ include file="/cabecera.jsp"%>
-  <a href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
+  <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
       <div class="mdl-grid center-items">
          <div class="mdl-cell mdl-cell--4-col">
          <h2 class="mdl-card__title-text">ALTA DE BEBIDA</h2>

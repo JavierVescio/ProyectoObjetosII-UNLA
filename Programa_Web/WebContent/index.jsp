@@ -64,7 +64,7 @@
          </div>
       </div>
       
-     <p class="error">
+     <p class="error" id="mierror">
 			<%String strMensajeError = (String)request.getAttribute("msgError"); 
 			if (strMensajeError == null)
 				strMensajeError = ""; //Si no se hace esto aca, se mostraria el texto 'null' siempre que no haya un msg de error

@@ -35,11 +35,25 @@ header.subtitulo {
 }
 
 p.error {
-	color: #e8491d;
+  position: relative;
+  color: #F44336;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 900
 }
 
 p.todobien {
-	color: #0000FF;
+  position: relative;
+  color: #0000FF;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 900
 }
 
 #contenido-login{
@@ -185,5 +199,3 @@ h2{
 	width: 95%;
 }
 
-      
-    

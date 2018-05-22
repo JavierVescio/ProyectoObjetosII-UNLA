@@ -58,7 +58,7 @@ $(document).ready( function () {
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
 
-<a href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
+<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
 
 	<div class="mdl-grid center-items">
 		<div class="mdl-cell mdl-cell--4-col">
