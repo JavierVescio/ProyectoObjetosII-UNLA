@@ -83,7 +83,7 @@
 	        }
 	    });
 	    $('#tablaOcupacionMesa tbody').on( 'click', 'tr', function () {
-	    		tableC.$('tr.se"WebContent/mesas/crearcomanda.jsp"lected').removeClass('selected');
+	    		tableC.$('tr.selected').removeClass('selected');
 	        	$(this).addClass('selected');
 	    	    var data = tableC.row(this).data();
 	    	    document.getElementById("hiddenIdOcupacionMesa").value = data[0];

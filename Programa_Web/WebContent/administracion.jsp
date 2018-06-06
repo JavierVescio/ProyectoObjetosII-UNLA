@@ -119,7 +119,7 @@
                <span class="split">
                </span>
                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect middle" href="mesas/verticket.jsp" title="">
-               Ver ticket
+               Ver todos los tickets
                </a>
                <!-- <span class="split">
                </span>
