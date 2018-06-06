@@ -48,7 +48,34 @@
 <script type="text/javascript">
 
 $(document).ready( function () {
-    $('#datatable').DataTable();
+    $('#datatable').DataTable({
+        "dom": 'T<"clear">lfrtip',
+        "tableTools": {
+            "sRowSelect": "multi",
+            "aButtons": [
+                {
+                    "sExtends": "select_none",
+                    "sButtonText": "Borrar selección"
+                }]
+        },"ordering": true,
+        "pagingType": "simple_numbers",
+//Actualizo las etiquetas de mi tabla para mostrarlas en español
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página.",
+            "zeroRecords": "No se encontró registro.",
+            "info": "  _START_ de _END_ (_TOTAL_ registros totales).",
+            "infoEmpty": "0 de 0 de 0 registros",
+            "infoFiltered": "(Encontrado de _MAX_registros)",
+            "search": "Buscar: ",
+            "processing": "Procesando la información",
+            "paginate": {
+                "first": " |< ",
+                "previous": "Ant.",
+                "next": "Sig.",
+                "last": " >| "
+            }
+        }
+    });
 } );
 	
 </script>
@@ -58,7 +85,7 @@ $(document).ready( function () {
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
 
-<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
+	<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent bt_nav" href="/Programa_Web/administracion.jsp">Volver</a>
 
 	<div class="mdl-grid center-items">
 		<div class="mdl-cell mdl-cell--4-col">

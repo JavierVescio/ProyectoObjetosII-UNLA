@@ -37,7 +37,7 @@ header.subtitulo {
 p.error {
   position: relative;
   color: #F44336;
-  height: 50px;
+  
   line-height: 50px;
   vertical-align: middle;
   font-size: 16px;
@@ -48,21 +48,36 @@ p.error {
 p.todobien {
   position: relative;
   color: #0000FF;
-  height: 50px;
+  
   line-height: 50px;
   vertical-align: middle;
   font-size: 16px;
   text-align: center;
   font-weight: 900
 }
-
+tr{
+text-align: center;
+}
 #contenido-login{
 	text-align: center;
 	display:block;
 	margin: auto;
 	width: 80%;
 }
+.bt_nav{
+	float:right;
+	top:5px;
+	left:-4px;
+	text-align: center;
+	
+}
+.bt-form{
+	position: relative;
+	float:left;
+	left:15px;
 
+
+}
 /*lista*/
 ul#lista li{
 	list-style: none;
@@ -198,4 +213,23 @@ h2{
 	margin: 25px;
 	width: 95%;
 }
+.combo-box {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+     -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+  background-color: #c0c0c0;
+}
+.combo-box select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+  color: #400040;
 
+}

@@ -56,7 +56,34 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
-	    var tableC = $('#tablaTicket').DataTable();
+	    var tableC = $('#tablaTicket').DataTable({
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "sRowSelect": "multi",
+                "aButtons": [
+                    {
+                        "sExtends": "select_none",
+                        "sButtonText": "Borrar selección"
+                    }]
+            },
+            "pagingType": "simple_numbers",
+//Actualizo las etiquetas de mi tabla para mostrarlas en español
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página.",
+                "zeroRecords": "No se encontró registro.",
+                "info": "  _START_ de _END_ (_TOTAL_ registros totales).",
+                "infoEmpty": "0 de 0 de 0 registros",
+                "infoFiltered": "(Encontrado de _MAX_ registros)",
+                "search": "Buscar: ",
+                "processing": "Procesando la información",
+                "paginate": {
+                    "first": " |< ",
+                    "previous": "Ant.",
+                    "next": "Sig.",
+                    "last": " >| "
+                }
+            }
+        });
 	    $('#tablaTicket tbody').on( 'click', 'tr', function () {
 	    		tableC.$('tr.selected').removeClass('selected');
 	        	$(this).addClass('selected');
@@ -74,7 +101,7 @@
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
 
-<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
+	<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent bt_nav" href="/Programa_Web/administracion.jsp">Volver</a>
 
 	<div class="subtitulo">
 		<!--Donde va el logo y el titulo-->
@@ -90,14 +117,14 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Mesa Nº</th>
+					<th>Nro mesa</th>
 					<th>Cliente</th>
 					<th>Camarero</th>
 					<th>Cajero</th>
 					<th>Comensales</th>
-					<th>Horario apertura mesa</th>
-					<th>Horario cierre mesa</th>
-					<th>Importe total</th>
+					<th>Hra apertura</th>
+					<th>Hra cierre</th>
+					<th>Total</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -142,10 +169,11 @@
 		<br>
 		<!-- Accent-colored raised button with ripple -->
 		<button id="btnVerDetalleTicket" disabled
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent bt-form">
 			Ver detalle del ticket</button>
 	</form>
-	
+	<br>
+	<br>
 	<ul id="lista">
 		<li>
 			<%Ticket ticket = (Ticket)request.getAttribute("ticket");

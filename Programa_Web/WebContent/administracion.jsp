@@ -35,7 +35,7 @@
    </HEAD>
    <BODY>
    <%@ include file="/cabecera.jsp"%>
-   <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/Programa_Web/">Salir</a>
+   <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent bt_nav" href="/Programa_Web/">Salir</a>
    
       <div class="mdl-grid card-centered">
       

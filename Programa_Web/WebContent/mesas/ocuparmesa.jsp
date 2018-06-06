@@ -51,7 +51,35 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
-	    var tableC = $('#tablaCliente').DataTable();
+	    var tableC = $('#tablaCliente').DataTable({
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "sRowSelect": "multi",
+                "aButtons": [
+                    {
+                        "sExtends": "select_none",
+                        "sButtonText": "Borrar selección"
+                    }]
+            },"ordering": true,
+            "pagingType": "simple_numbers",
+//Actualizo las etiquetas de mi tabla para mostrarlas en español
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página.",
+                "zeroRecords": "No se encontró registro.",
+                "info": "  _START_ de _END_ (_TOTAL_registros totales).",
+                "infoEmpty": "0 de 0 de 0 registros",
+                "infoFiltered": "(Encontrado de _MAX_registros)",
+                "search": "Buscar: ",
+                "processing": "Procesando la información",
+                "paginate": {
+                    "first": " |< ",
+                    "previous": "Ant.",
+                    "next": "Sig.",
+                    "last": " >| "
+                }
+            }
+        });
+	    
 	    $('#tablaCliente tbody').on( 'click', 'tr', function () {
 	    		tableC.$('tr.selected').removeClass('selected');
 	        	$(this).addClass('selected');
@@ -60,7 +88,34 @@
 	    	    document.getElementById("hiddenIdCliente").value = data[0];
 	    } );
 	    
-	    var tableD = $('#tablaCamarero').DataTable();
+	    var tableD = $('#tablaCamarero').DataTable({
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "sRowSelect": "multi",
+                "aButtons": [
+                    {
+                        "sExtends": "select_none",
+                        "sButtonText": "Borrar selección"
+                    }]
+            },
+            "pagingType": "simple_numbers",
+//Actualizo las etiquetas de mi tabla para mostrarlas en español
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página.",
+                "zeroRecords": "No se encontró registro.",
+                "info": "  _START_ de _END_ (_TOTAL_ registros totales).",
+                "infoEmpty": "0 de 0 de 0 registros",
+                "infoFiltered": "(Encontrado de _MAX_ registros)",
+                "search": "Buscar: ",
+                "processing": "Procesando la información",
+                "paginate": {
+                    "first": " |< ",
+                    "previous": "Ant.",
+                    "next": "Sig.",
+                    "last": " >| "
+                }
+            }
+        });
 	    $('#tablaCamarero tbody').on( 'click', 'tr', function () {
 	    		tableD.$('tr.selected').removeClass('selected');
 	        	$(this).addClass('selected');
@@ -80,8 +135,7 @@
 </HEAD>
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
-
-<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/Programa_Web/administracion.jsp">Volver al menú principal</a>
+	<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent bt_nav" href="/Programa_Web/administracion.jsp">Volver</a>
 
 	<div class="subtitulo">
 		<!--Donde va el logo y el titulo-->
@@ -123,7 +177,7 @@
 					PersonaABM abmPersona = new PersonaABM();
 					List<Cliente> lista = abmPersona.traerClientes();
 					for (Cliente cliente : lista) {
-				%><tr>
+				%><tr >
 					<td><%=cliente.getIdPersona()%></td>
 					<td><%=cliente.getApellido()%></td>
 					<td><%=cliente.getNombre()%></td>
@@ -161,7 +215,7 @@
 					List<Personal> listaPersonal = abmPersona.traerCamareros();
 					for (Personal personal : listaPersonal) {
 						int cantidad = abmPersona.traerPersonalConCantidadDeMesasAsignadas(personal.getIdPersona());
-				%><tr>
+				%><tr align="center">
 					<td><%=personal.getIdPersona()%></td>
 					<td><%=personal.getApellido()%></td>
 					<td><%=personal.getNombre()%></td>
@@ -213,7 +267,8 @@
 		<input type="hidden" id="hiddenIdCamarero" name="idcamarero" value="-1" >
 		
 		<h5>3.- Selección de mesa</h5>
-		<select name="idmesa" >
+		<div class="combo-box">
+		<select  name="idmesa" >
 			<%
 				MesaABM abmMesa = new MesaABM();
 				List<Mesa> listaMesas = abmMesa.traerMesas();
@@ -231,7 +286,8 @@
 					%><option value="-1">No hay mesa libre disponible</option><%
 				}
 			%>
-		</select>	
+		</select>
+		</div>	
 		<br>
 		<h5>4.- Cantidad de comensales</h5>
 		<div class="mdl-textfield mdl-js-textfield">
@@ -244,8 +300,8 @@
 
 		<!-- Accent-colored raised button with ripple -->
 		<button id="btnRegistrarOcupacion"
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-			Registrar ocupación de mesa</button>
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent bt-form">
+			Registrar</button>
 	</form>
 
 
